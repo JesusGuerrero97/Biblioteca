@@ -13,8 +13,6 @@ import javax.swing.JOptionPane;
 
 import Vista.VistaAltaCliente;
 import Modelo.ModeloAltaCliente;
-import Modelo.ModeloAltaLibro;
-import Vista.VistaAltaLibro;
 /**
  *
  * @author Dania
