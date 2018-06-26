@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controlador;
+import Modelo.ModeloLibro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -11,15 +12,15 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import Vista.VistaConsultaSucursal;
-import Modelo.ModeloConsultaSucursal;
+import Vista.VistaSucursal;
+import Modelo.ModeloSucursal;
 /**
  *
  * @author Dania
  */
-public class ControladorConsulaSucursal implements ActionListener, MouseListener{
-    private ModeloConsultaSucursal modelo;
-    private VistaConsultaSucursal vista;
+public class ControladorSucursal implements ActionListener, MouseListener{
+    private ModeloSucursal modelo;
+    private VistaSucursal vista;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -50,5 +51,4 @@ public class ControladorConsulaSucursal implements ActionListener, MouseListener
     public void mouseExited(MouseEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }
