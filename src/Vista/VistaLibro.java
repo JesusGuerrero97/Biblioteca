@@ -47,14 +47,14 @@ public class VistaLibro extends javax.swing.JFrame {
         txtEdicion = new javax.swing.JTextField();
         txtGenero = new javax.swing.JTextField();
         jDateChooserAddLibro = new com.toedter.calendar.JDateChooser();
-        btnCancelar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         txtIdSucursal = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtExistencia = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnCancelar1 = new javax.swing.JButton();
-        btnCancelar4 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         btnGuardar1.setText("GUARDAR");
         btnGuardar1.addActionListener(new java.awt.event.ActionListener() {
@@ -150,13 +150,13 @@ public class VistaLibro extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnAgregar.png"))); // NOI18N
-        btnCancelar.setBorder(null);
-        btnCancelar.setBorderPainted(false);
-        btnCancelar.setContentAreaFilled(false);
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnAgregar.png"))); // NOI18N
+        btnAgregar.setBorder(null);
+        btnAgregar.setBorderPainted(false);
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -201,13 +201,13 @@ public class VistaLibro extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEditar3.png"))); // NOI18N
-        btnCancelar4.setBorder(null);
-        btnCancelar4.setBorderPainted(false);
-        btnCancelar4.setContentAreaFilled(false);
-        btnCancelar4.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEditar3.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.setBorderPainted(false);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelar4ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
@@ -225,9 +225,9 @@ public class VistaLibro extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancelar)
+                                .addComponent(btnAgregar)
                                 .addGap(92, 92, 92)
-                                .addComponent(btnCancelar4))
+                                .addComponent(btnEditar))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,8 +335,8 @@ public class VistaLibro extends javax.swing.JFrame {
                     .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnCancelar4)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnEditar)
                     .addComponent(btnCancelar1))
                 .addGap(46, 46, 46))
         );
@@ -379,9 +379,9 @@ public class VistaLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGeneroActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
@@ -407,9 +407,9 @@ public class VistaLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelar2ActionPerformed
 
-    private void btnCancelar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar4ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelar4ActionPerformed
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -450,10 +450,10 @@ public class VistaLibro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnCancelar;
+    public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnCancelar1;
     public javax.swing.JButton btnCancelar2;
-    public javax.swing.JButton btnCancelar4;
+    public javax.swing.JButton btnEditar;
     public javax.swing.JButton btnGuardar1;
     public javax.swing.JButton btnRegresar;
     public com.toedter.calendar.JDateChooser jDateChooserAddLibro;
