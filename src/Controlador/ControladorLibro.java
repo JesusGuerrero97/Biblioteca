@@ -24,9 +24,6 @@ public class ControladorLibro implements ActionListener, MouseListener{
     
     
     public void transparenciaButton(){
-        vista.btnGuardar.setOpaque(false);
-        vista.btnGuardar.setContentAreaFilled(false);
-        vista.btnGuardar.setBorderPainted(false);
         vista.btnCancelar.setOpaque(false);
         vista.btnCancelar.setContentAreaFilled(false);
         vista.btnCancelar.setBorderPainted(false);
