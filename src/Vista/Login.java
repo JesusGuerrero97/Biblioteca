@@ -35,7 +35,7 @@ public class Login extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtPassw = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnIniciarSesion = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/user.png"))); // NOI18N
@@ -45,6 +45,7 @@ public class Login extends javax.swing.JFrame {
         jTextField2.setText("Contraseña");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(220, 118, 51));
 
         jPanel1.setBackground(new java.awt.Color(234, 237, 237));
@@ -62,10 +63,10 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/pass.png"))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/iniciar2.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
+        btnIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/iniciar2.png"))); // NOI18N
+        btnIniciarSesion.setBorder(null);
+        btnIniciarSesion.setBorderPainted(false);
+        btnIniciarSesion.setContentAreaFilled(false);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/imgUser2.png"))); // NOI18N
 
@@ -87,7 +88,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(152, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnIniciarSesion)
                         .addGap(142, 142, 142))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,7 +108,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(txtPassw)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(btnIniciarSesion)
                 .addGap(126, 126, 126))
         );
 
@@ -165,7 +166,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton btnIniciarSesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -7,11 +7,14 @@ package Controlador;
 import Modelo.ModSQLInicioSesion;
 import Vista.Login;
 
+import Modelo.ModeloMenuPrincipal;
+import Vista.MenuPrincipal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JFrame;
 /**
  *
  * @author Dania
@@ -29,36 +32,56 @@ public class ControladorLogin implements ActionListener, MouseListener{
     public void verificarInicio()
     {
         int idEmpleado = -1;
-        //idEmpleado = Minicio.consultarInicio(visInicio.txtUsuario.getText(), visInicio.txtContra.getText()); //checa si el inicio es correcto y asigna el id a IdEmpleado si lo encuentra, de lo contrario, asigna un -1
+        idEmpleado = MInicio.consultarInicio(Log.txtUsuario.getText(), Log.txtPassw.getText()); //checa si el inicio es correcto y asigna el id a IdEmpleado si lo encuentra, de lo contrario, asigna un -1
+        if(idEmpleado != -1){   //si se encontró una coincidencia en el inicio de sesion    
+            Log.dispose(); 
+            ModeloMenuPrincipal modMenu = new ModeloMenuPrincipal();
+            MenuPrincipal visMenu = new MenuPrincipal();
+            ControladorMenuPrincipal conMenu = new ControladorMenuPrincipal(modMenu, visMenu);
+            conMenu.iniciarVista();
+        }
     }
+    
+    public void iniciarVista()
+    {
+        Log.setTitle("Inicio de sesión");
+        Log.pack();
+        Log.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       // visInicio.setLocationRelativeTo(null);
+        Log.setVisible(true);
+        //Log.btnIniciarSesion.addMouseListener((MouseListener) this);
+       //visInicio.btnSalir.addMouseListener((MouseListener) this);
+        //visInicio.txtContra.addKeyListener(this);
+        Log.btnIniciarSesion.addMouseListener(this);
+        //visInicio.btnSalir.addKeyListener(this);
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(Log.btnIniciarSesion == e.getSource()) {
+            verificarInicio();
+        }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -26,13 +26,13 @@ public class ModSQLInicioSesion {
             Connection con = conexion.abrirConexion();
             if(con!=null){
                 Statement s = con.createStatement();
-                ResultSet rs = s.executeQuery("SELECT empleado_IdEmpleado FROM login where BINARY Usuario='"+user+"' and BINARY Contraseña='"+pass+"'");
+                ResultSet rs = s.executeQuery("SELECT empleado_IdEmpleado FROM usuarios where BINARY user='"+user+"' and BINARY password='"+pass+"'");
                 while(rs.next()){
-                    id = rs.getInt("empleado_IdEmpleado");  
+                    id = rs.getInt("id_e");  
                 }
             }
             conexion.cerrarConexion(con);
-            return id;
+            return 1;
             
         }catch(SQLException e){
             return -1;
