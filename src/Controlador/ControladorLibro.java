@@ -11,15 +11,15 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import Vista.VistaAltaLibro;
-import Modelo.ModeloAltaLibro;
+import Vista.VistaLibro;
+import Modelo.ModeloLibro;
 /**
  *
  * @author Dania
  */
-public class ControladorAltaLibro implements ActionListener, MouseListener{
-    private ModeloAltaLibro modelo;
-    private VistaAltaLibro vista;
+public class ControladorLibro implements ActionListener, MouseListener{
+    private ModeloLibro modelo;
+    private VistaLibro vista;
     
     
     

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Controlador;
-import Modelo.ModeloAltaLibro;
+import Modelo.ModeloLibro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 import Vista.VistaAltaRenta;
 import Modelo.ModeloAltaRenta;
-import Vista.VistaAltaLibro;
+import Vista.VistaLibro;
 /**
  *
  * @author Dania
