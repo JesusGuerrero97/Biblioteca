@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import Vista.VistaAltaCliente;
+//import Vista.VistaAltaCliente;
 import Modelo.ModeloAltaCliente;
 /**
  *
@@ -19,18 +19,18 @@ import Modelo.ModeloAltaCliente;
  */
 public class ControladorAltaCliente implements ActionListener, MouseListener{
     private ModeloAltaCliente modelo;
-    private VistaAltaCliente vista;
+  //  private VistaAltaCliente vista;
 
      public void transparenciaButton(){
-        vista.btnGuardar.setOpaque(false);
-        vista.btnGuardar.setContentAreaFilled(false);
-        vista.btnGuardar.setBorderPainted(false);
-        vista.btnCancelar.setOpaque(false);
-        vista.btnCancelar.setContentAreaFilled(false);
-        vista.btnCancelar.setBorderPainted(false);
-        vista.btnRegresar.setOpaque(false);
-        vista.btnRegresar.setContentAreaFilled(false);
-        vista.btnRegresar.setBorderPainted(false);
+    //    vista.btnGuardar.setOpaque(false);
+    //  vista.btnGuardar.setContentAreaFilled(false);
+    //    vista.btnGuardar.setBorderPainted(false);
+    //    vista.btnCancelar.setOpaque(false);
+    //   vista.btnCancelar.setContentAreaFilled(false);
+    //    vista.btnCancelar.setBorderPainted(false);
+    //    vista.btnRegresar.setOpaque(false);
+    //  vista.btnRegresar.setContentAreaFilled(false);
+    //    vista.btnRegresar.setBorderPainted(false);
     }
      
     @Override

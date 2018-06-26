@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Controlador;
-import Modelo.ModeloAltaLibro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -12,15 +11,17 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import Vista.VistaConsultaEmpleado;
-import Modelo.ModeloConsultaEmpleado;
+import Vista.VistaEmpleado;
+import Modelo.ModeloEmpleado;
+import Modelo.ModeloAltaLibro;
+import Vista.VistaAltaLibro;
 /**
  *
  * @author Dania
  */
-public class ControladorConsultaEmpleado implements ActionListener, MouseListener{
-    private ModeloConsultaEmpleado modelo;
-    private VistaConsultaEmpleado vista;
+public class ControladorEmpleado implements ActionListener, MouseListener{
+    private ModeloEmpleado modelo;
+    private VistaEmpleado vista;
 
     @Override
     public void actionPerformed(ActionEvent e) {
