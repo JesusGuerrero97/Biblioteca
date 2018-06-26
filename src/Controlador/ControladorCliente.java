@@ -12,15 +12,15 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import Vista.VistaConsultaCliente;
-import Modelo.ModeloConsultaCliente;
+import Vista.VistaCliente;
+import Modelo.ModeloCliente;
 /**
  *
  * @author Dania
  */
-public class ControladorConsultaCliente implements ActionListener, MouseListener{
-    private ModeloConsultaCliente modelo;
-    private VistaConsultaCliente vista;
+public class ControladorCliente implements ActionListener, MouseListener{
+    private ModeloCliente modelo;
+    private VistaCliente vista;
 
     @Override
     public void actionPerformed(ActionEvent e) {

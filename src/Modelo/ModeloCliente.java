@@ -9,6 +9,6 @@ package Modelo;
  *
  * @author Dania
  */
-public class ModeloConsultaCliente {
+public class ModeloCliente {
     
 }
