@@ -17,7 +17,7 @@ public class Conexion {
         try {
             //Inicializar la conexión a la base de datos
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ejemplo", "root", ""); //Motor, dirección, puerto, nombre
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdbiblio", "root", ""); //Motor, dirección, puerto, nombre
             System.out.println("Conexión realizada");
         }catch(SQLException e) {
             System.out.print("No se pudo realizar la conexión\n");
