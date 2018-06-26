@@ -13,6 +13,9 @@ import javax.swing.JOptionPane;
 
 import Vista.VistaLibro;
 import Modelo.ModeloLibro;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author Dania
@@ -20,45 +23,87 @@ import Modelo.ModeloLibro;
 public class ControladorLibro implements ActionListener, MouseListener{
     private ModeloLibro modelo;
     private VistaLibro vista;
-    
-    
+    //private Date fecha_ini;
     
     public void transparenciaButton(){
-        vista.btnCancelar.setOpaque(false);
-        vista.btnCancelar.setContentAreaFilled(false);
-        vista.btnCancelar.setBorderPainted(false);
+        vista.btnAgregar.setOpaque(false);
+        vista.btnAgregar.setContentAreaFilled(false);
+        vista.btnAgregar.setBorderPainted(false);
         vista.btnRegresar.setOpaque(false);
         vista.btnRegresar.setContentAreaFilled(false);
         vista.btnRegresar.setBorderPainted(false);
     }
-
+    
+    public ControladorLibro(ModeloLibro modelo, VistaLibro vista) {
+        this.modelo = modelo;
+        this.vista = vista;
+        this.vista.btnAgregar.addActionListener(this);
+        this.vista.btnEditar.addActionListener(this);
+        this.vista.btnCancelar1.addActionListener(this);
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          if(vista.btnAgregar == e.getSource()) {
+//            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+//            String fechaBD = df.format(vista.jDateChooserAddLibro.getDate());
+//            this.fecha_ini = vista.jDateChooserAddLibro.getDate();
+            if(modelo.insertarLibro(vista.txtNombre.getText(), vista.txtAutor.getText(), vista.txtEditorial.getText(),vista.jDateChooserAddLibro.getDate(), vista.txtEdicion.getText(), vista.txtGenero.getText(), vista.txtNumPag.getText(), Integer.parseInt(vista.txtIdSucursal.getText()), Integer.parseInt(vista.txtExistencia.getText()))) {
+                
+                limpiar();
+            }
+        }
+        if(vista.btnEditar == e.getSource()) {
+            if(modelo.modificarLibro(Integer.parseInt(vista.txtIdLibro.getText()),vista.txtNombre.getText(), vista.txtAutor.getText(), vista.txtEditorial.getText(),vista.jDateChooserAddLibro.getDate(), vista.txtEdicion.getText(), vista.txtGenero.getText(), vista.txtNumPag.getText(), Integer.parseInt(vista.txtIdSucursal.getText()), Integer.parseInt(vista.txtExistencia.getText()))) {
+                
+                limpiar();
+            }
+        }
+        if(vista.btnCancelar1 == e.getSource()) {
+            if(modelo.deleteLibro(Integer.parseInt(vista.txtIdLibro.getText()))) {
+                
+            }
+        }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
+    }
+    public void limpiar() {
+        vista.txtNombre.setText("");
+        vista.txtAutor.setText("");
+        vista.txtEditorial.setText("");
+        vista.txtGenero.setText("");
+        vista.txtNumPag.setText("");
+        vista.txtIdLibro.setText("");
+        vista.txtEdicion.setText("");
+        vista.txtIdSucursal.setText("");
+        vista.txtExistencia.setText("");
+    }
+    public void iniciarVista() {
+        vista.setTitle("Usuarios");
+        vista.setVisible(true);
+        vista.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+       
     }
 }
