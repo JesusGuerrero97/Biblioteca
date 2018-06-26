@@ -52,7 +52,7 @@ public class ControladorLogin implements ActionListener, MouseListener{
         //Log.btnIniciarSesion.addMouseListener((MouseListener) this);
        //visInicio.btnSalir.addMouseListener((MouseListener) this);
         //visInicio.txtContra.addKeyListener(this);
-        Log.btnIniciarSesion.addMouseListener(this);
+        Log.btnIniciarSesion.addActionListener(this);
         //visInicio.btnSalir.addKeyListener(this);
     }
     
