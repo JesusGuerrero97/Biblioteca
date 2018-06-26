@@ -69,6 +69,9 @@ public class ControladorLogin implements ActionListener, MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if(Log.btnIniciarSesion == e.getSource()) {
+            verificarInicio();
+        }
     }
 
     @Override
