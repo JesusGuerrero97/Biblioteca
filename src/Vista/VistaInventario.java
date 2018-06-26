@@ -44,6 +44,8 @@ public class VistaInventario extends javax.swing.JFrame {
         btnAgregar2 = new javax.swing.JButton();
         btnEditar2 = new javax.swing.JButton();
         btnCancelar2 = new javax.swing.JButton();
+        btnCancelar4 = new javax.swing.JButton();
+        btnCancelar3 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 36)); // NOI18N
         jLabel1.setText("Agregar Libro");
@@ -156,6 +158,11 @@ public class VistaInventario extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar.png"))); // NOI18N
+        btnCancelar4.setBorder(null);
+        btnCancelar4.setBorderPainted(false);
+        btnCancelar4.setContentAreaFilled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -178,18 +185,20 @@ public class VistaInventario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(comboIdLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnBuscar1))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnAgregar2)
-                                        .addGap(43, 43, 43)
-                                        .addComponent(btnEditar2)
-                                        .addGap(31, 31, 31)
-                                        .addComponent(btnCancelar2)))))
-                        .addGap(256, 256, 256))))
+                                .addComponent(comboIdLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBuscar1)
+                                .addGap(321, 321, 321)))
+                        .addGap(256, 256, 256))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAgregar2)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnEditar2)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar4)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnCancelar2)
+                        .addGap(226, 226, 226))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,15 +220,19 @@ public class VistaInventario extends javax.swing.JFrame {
                         .addComponent(btnBuscar1)))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAgregar2)
-                            .addComponent(btnEditar2))
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAgregar2)
+                    .addComponent(btnEditar2)
+                    .addComponent(btnCancelar4)
                     .addComponent(btnCancelar2))
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(87, Short.MAX_VALUE))
         );
+
+        btnCancelar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar.png"))); // NOI18N
+        btnCancelar3.setBorder(null);
+        btnCancelar3.setBorderPainted(false);
+        btnCancelar3.setContentAreaFilled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,10 +241,20 @@ public class VistaInventario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnCancelar3)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnCancelar3)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -311,6 +334,8 @@ public class VistaInventario extends javax.swing.JFrame {
     public javax.swing.JButton btnBuscar1;
     public javax.swing.JButton btnCancelar1;
     public javax.swing.JButton btnCancelar2;
+    public javax.swing.JButton btnCancelar3;
+    public javax.swing.JButton btnCancelar4;
     public javax.swing.JButton btnEditar1;
     public javax.swing.JButton btnEditar2;
     public javax.swing.JButton btnRegresar;
