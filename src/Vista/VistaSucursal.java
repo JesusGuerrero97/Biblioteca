@@ -172,7 +172,6 @@ public class VistaSucursal extends javax.swing.JFrame {
                 "Id_Sucursal", "Nombre", "Dirección", "Teléfono", "Correo"
             }
         ));
-        tablaSuc.setRowSelectionAllowed(true);
         tablaSuc.setSurrendersFocusOnKeystroke(true);
         tablaSuc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
