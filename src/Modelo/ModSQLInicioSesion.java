@@ -21,21 +21,22 @@ public class ModSQLInicioSesion {
     private final Conexion conexion = new Conexion();
     
     public int consultarInicio(String user, String pass){
-        int id = -1;
+        
+        int result = -1;
         try{
             Connection con = conexion.abrirConexion();
             if(con!=null){
                 Statement s = con.createStatement();
-                ResultSet rs = s.executeQuery("SELECT empleado_IdEmpleado FROM usuarios where BINARY user='"+user+"' and BINARY password='"+pass+"'");
-                while(rs.next()){
-                    id = rs.getInt("id_e");  
+                ResultSet rs = s.executeQuery("SELECT * FROM usuarios where user='"+user+"' AND password='"+pass+"'");
+                if(rs.next()){
+                    result = 1;  
                 }
             }
             conexion.cerrarConexion(con);
-            return 1;
+            return result;
             
         }catch(SQLException e){
-            return -1;
+            return 0;
         }
     }
 }
