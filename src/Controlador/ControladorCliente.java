@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
 
 import Vista.VistaCliente;
 import Modelo.ModeloCliente;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import Modelo.ModeloMenuPrincipal;
+import Vista.MenuPrincipal;
 /**
  *
  * @author Dania
@@ -32,9 +32,12 @@ public class ControladorCliente implements ActionListener, MouseListener{
 public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
 {       this.modelo = Modelo;
         this.vista = Vista;
+        this.vista.clientes.addMouseListener(this);
         vista.btnAgregar.addActionListener(this); //Aqui
         vista.btnEditar1.addActionListener(this);//Aqui
         vista.btnCancelar.addActionListener(this);//Aqui
+        vista.btnBuscar.addActionListener(this);
+        
 }
     public void iniciarVista() 
 {
@@ -44,6 +47,7 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
     vista.setLocationRelativeTo(null);//Aqui
     vista.setResizable(false);//Aqui
     vista.setVisible(true);//Aqui
+    vista.clientes.setModel(modelo.cargarDatos());
     
 }
         
@@ -69,34 +73,57 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
 //            }
                 limpiar();
         }
+        if(vista.btnBuscar == e.getSource()){ 
+            vista.btnCancelar.setEnabled(true);
+            int id_cliente = Integer.parseInt(vista.txtIdCliente.getText());
+            vista.clientes.setModel(modelo.buscarDatos( id_cliente));          
+            JOptionPane.showMessageDialog(null, "Registro consultado exitosamente");
+        }
+        if(vista.btnRegresar == e.getSource()){
+            MenuPrincipal obj = new MenuPrincipal();
+            ModeloMenuPrincipal modeloMenu = new ModeloMenuPrincipal();
+            //ControladorMenuPrincipal ControladorMenuPrincipal = new ControladorMenuPrincipal(modeloMenu,obj);
+            //ControladorMenuPrincipal.iniciarVista();
+            vista.dispose();
+        }
         
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
            }
     
 
     @Override
-    public void mouseClicked(MouseEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void mouseClicked(MouseEvent e) {
+        if(vista.clientes== e.getSource()){
+            int fila=vista.clientes.rowAtPoint(e.getPoint());
+            if(fila > -1)
+            {
+                vista.txtIdCliente.setText(String.valueOf(vista.clientes.getValueAt(fila, 0)));
+                vista.txtNombre.setText(String.valueOf(vista.clientes.getValueAt(fila, 1)));
+                vista.txtDireccion.setText(String.valueOf(vista.clientes.getValueAt(fila, 2)));
+                vista.txtTelefono.setText(String.valueOf(vista.clientes.getValueAt(fila, 3)));
+                vista.txtCorreo.setText(String.valueOf(vista.clientes.getValueAt(fila, 4)));
+            }
+        }  //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mousePressed(MouseEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseReleased(MouseEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseEntered(MouseEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //To change body of generated methods, choose Tools | Templates.
     }
     public void limpiar() {
         vista.txtNombre.setText("");

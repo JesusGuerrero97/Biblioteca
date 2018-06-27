@@ -43,7 +43,7 @@ public class ModeloCliente {
             Connection con = conexion .abrirConexion();
             Statement s = con.createStatement();
             System.out.println("update libro set nombre_cli = '"+nombre+"', direccion = '"+direccion+"', telefono = '"+telefono+"', correo = '"+correo+"', libros_adq = '"+librosadq+ "' where id_cliente = "+id+"");
-            s.executeUpdate("update biblioteca.libro set nombre_cli = '"+nombre+"', direccion = '"+direccion+"', telefono = '"+telefono+"', correo = '"+correo+"', libros_adq = '"+librosadq+ "' where id_cliente = '"+id+"';");
+            s.executeUpdate("update biblioteca.cliente set nombre_cli = '"+nombre+"', direccion = '"+direccion+"', telefono = '"+telefono+"', correo = '"+correo+"', libros_adq = '"+librosadq+ "' where id_cliente = '"+id+"';");
 
             conexion.cerrarConexion(con);
             return true;
@@ -57,12 +57,83 @@ public class ModeloCliente {
         {
             Connection con = conexion .abrirConexion();
             Statement s = con.createStatement();
-            s.executeUpdate("delete from libro where id_libro = "+id+"");
+            s.executeUpdate("delete from cliente where id_cliente = "+id+"");
             conexion.cerrarConexion(con);
             return true;
         
         } catch (SQLException e) {
             return false;
         } 
+    }
+        public DefaultTableModel cargarDatos(){
+        try
+       {
+         Connection con = conexion.abrirConexion();
+         Statement s = con.createStatement();
+         DefaultTableModel modelo;
+        
+         try
+        {
+          ResultSet rs = s.executeQuery("SELECT * FROM cliente;");
+          modelo = new DefaultTableModel();
+          ResultSetMetaData rsMd = rs.getMetaData();
+          int cantidadColumnas = rsMd.getColumnCount();
+          for(int i = 1; i <= cantidadColumnas; i++)
+          {
+            modelo.addColumn(rsMd.getColumnLabel(i));
+          }while(rs.next())
+          {
+              Object[] fila = new Object[cantidadColumnas];
+              for(int i = 0; i < cantidadColumnas; i++)
+              {
+                  fila[i] = rs.getObject(i+1);
+              }
+              modelo.addRow(fila);
+          }return modelo;
+        }finally
+         {
+             conexion.cerrarConexion(con);
+         }
+       }catch(SQLException e)
+       {
+           e.printStackTrace();
+       }
+       return null;
+    }
+    
+    public DefaultTableModel buscarDatos(int id){
+        try
+       {
+         Connection con = conexion.abrirConexion();
+         Statement s = con.createStatement();
+         DefaultTableModel modelo;
+        
+         try
+        {
+          ResultSet rs = s.executeQuery("SELECT * FROM cliente WHERE id_cliente = "+id+";");
+          modelo = new DefaultTableModel();
+          ResultSetMetaData rsMd = rs.getMetaData();
+          int cantidadColumnas = rsMd.getColumnCount();
+          for(int i = 1; i <= cantidadColumnas; i++)
+          {
+            modelo.addColumn(rsMd.getColumnLabel(i));
+          }while(rs.next())
+          {
+              Object[] fila = new Object[cantidadColumnas];
+              for(int i = 0; i < cantidadColumnas; i++)
+              {
+                  fila[i] = rs.getObject(i+1);
+              }
+              modelo.addRow(fila);
+          }return modelo;
+        }finally
+         {
+             conexion.cerrarConexion(con);
+         }
+       }catch(SQLException e)
+       {
+           e.printStackTrace();
+       }
+       return null;
     }
 }
