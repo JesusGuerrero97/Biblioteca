@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package Vista;
-
+import Modelo.*;
+import Controlador.*;
 /**
  *
  * @author Dania
  */
 public class VistaSucursal extends javax.swing.JFrame {
-
+    private Conexion con = new Conexion();
     /**
      * Creates new form VistaLibro
      */
@@ -42,11 +43,11 @@ public class VistaSucursal extends javax.swing.JFrame {
         txtCorreo = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        btnEditar1 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaSuc = new javax.swing.JTable();
         btnBuscar1 = new javax.swing.JButton();
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnLupita2.png"))); // NOI18N
@@ -126,13 +127,13 @@ public class VistaSucursal extends javax.swing.JFrame {
             }
         });
 
-        btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEditar3.png"))); // NOI18N
-        btnEditar1.setBorder(null);
-        btnEditar1.setBorderPainted(false);
-        btnEditar1.setContentAreaFilled(false);
-        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEditar3.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.setBorderPainted(false);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditar1ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
@@ -140,6 +141,11 @@ public class VistaSucursal extends javax.swing.JFrame {
         btnAgregar.setBorder(null);
         btnAgregar.setBorderPainted(false);
         btnAgregar.setContentAreaFilled(false);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnRegresar.png"))); // NOI18N
         btnRegresar.setBorder(null);
@@ -152,7 +158,7 @@ public class VistaSucursal extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaSuc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -160,7 +166,7 @@ public class VistaSucursal extends javax.swing.JFrame {
                 "Nombre", "Dirección", "Teléfono", "Correo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaSuc);
 
         btnBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnLupita2.png"))); // NOI18N
         btnBuscar1.setBorder(null);
@@ -201,7 +207,7 @@ public class VistaSucursal extends javax.swing.JFrame {
                     .addComponent(btnCancelar)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(235, 235, 235))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(162, 162, 162)
@@ -243,9 +249,10 @@ public class VistaSucursal extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
                         .addComponent(btnAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEditar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -295,13 +302,17 @@ public class VistaSucursal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditar1ActionPerformed
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,7 +361,7 @@ public class VistaSucursal extends javax.swing.JFrame {
     public javax.swing.JButton btnBuscar;
     public javax.swing.JButton btnBuscar1;
     public javax.swing.JButton btnCancelar;
-    public javax.swing.JButton btnEditar1;
+    public javax.swing.JButton btnEditar;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
@@ -361,7 +372,7 @@ public class VistaSucursal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable tablaSuc;
     public javax.swing.JTextField txtCorreo;
     public javax.swing.JTextField txtDireccion;
     public javax.swing.JTextField txtIdSucursal;
