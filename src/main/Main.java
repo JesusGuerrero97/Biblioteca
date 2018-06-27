@@ -21,15 +21,15 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //ModSQLInicioSesion modelo = new ModSQLInicioSesion();
-        /*Login vista = new Login();
+        ModSQLInicioSesion modelo = new ModSQLInicioSesion();
+        Login vista = new Login();
         ControladorLogin control = new ControladorLogin(modelo, vista);
-        control.iniciarVista();*/
+        control.iniciarVista();
         
-        VistaSucursal vista = new VistaSucursal();
+        /*VistaSucursal vista = new VistaSucursal();
         ModeloSucursal modelo = new ModeloSucursal();
         ControladorSucursal control = new ControladorSucursal(modelo, vista);
-        control.iniciarVista();
+        control.iniciarVista();*/
     }
     
 }

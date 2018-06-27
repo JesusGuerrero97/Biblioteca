@@ -63,6 +63,7 @@ public class ControladorMenuPrincipal implements ActionListener {
             ModeloInventario InventarioMod = new ModeloInventario();
             VistaInventario InventarioVis = new VistaInventario();
             ControladorInventario InventarioCon = new ControladorInventario(InventarioMod,InventarioVis); 
+            InventarioCon.iniciarVista();
         }
     }
 }
