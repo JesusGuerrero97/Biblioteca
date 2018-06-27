@@ -27,14 +27,17 @@ import java.util.Calendar;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-public class ControladorSucursal implements ActionListener, MouseListener{
+public class ControladorSucursal implements ActionListener, PropertyChangeListener, ChangeListener, MouseListener{
     private ModeloSucursal modelo;
     private VistaSucursal vista;
     
+    String datos[][]={};
+    String[] camposCliente={"idSuc","nombre","direc", "tel","correo"};
     
     public ControladorSucursal(ModeloSucursal modelo, VistaSucursal vista){
         this.modelo=modelo;
         this.vista=vista;
+        this.vista.tablaSuc.addMouseListener(this);
         this.vista.btnEditar.addActionListener(this);
         this.vista.btnEliminar.addActionListener(this);
         this.vista.btnAgregar.addActionListener(this);
@@ -53,6 +56,41 @@ public class ControladorSucursal implements ActionListener, MouseListener{
         vista.setResizable(true);
         vista.setTitle("Sucursal");
         transparenciaButton();
+        
+        vista.setAlwaysOnTop( false );
+        vista.setVisible(true);
+        deshabilitarElementos();
+    }
+    public void deshabilitarElementos()
+    {
+        vista.btnCancelar.setEnabled(false);
+        vista.btnEditar.setEnabled(false);
+        /*vista.txtCorreo.setEnabled(false);
+        vista.txtNombre.setEnabled(false);
+        vista.txtDireccion.setEnabled(false);
+        vista.txtTelefono.setEnabled(false);*/
+    }
+    
+    public void habilitarElementos()
+    {
+        
+        vista.txtCorreo.setEnabled(true);
+        vista.txtNombre.setEnabled(true);
+        vista.txtDireccion.setEnabled(true);
+        vista.txtTelefono.setEnabled(true);
+    }
+    public void deshabilitarElementosCancelar()
+    {
+        vista.tablaSuc.setEnabled(false);
+        vista.btnEditar.setEnabled(false);
+        vista.btnBuscar1.setEnabled(true);
+        vista.tablaSuc.setModel(modelo.cargarDatos(datos, camposCliente, 0));
+        vista.txtCorreo.setText("");
+        vista.txtNombre.setText("");
+        vista.txtDireccion.setText("");
+        vista.txtTelefono.setText("");
+        vista.btnCancelar.setEnabled(false);
+        vista.btnAgregar.setEnabled(false);
     }
     
     public void transparenciaButton(){
@@ -103,8 +141,53 @@ public class ControladorSucursal implements ActionListener, MouseListener{
             //ControladorMenuPrincipal.iniciarVista();
             vista.dispose();
         }
+        else if(vista.btnBuscar1 == evento.getSource()){ 
+            vista.btnCancelar.setEnabled(true);
+            int id_sucursal = vista.tablaSuc.setModel(modelo.cargarDatos(datos, camposCliente, id_sucursal));         
+            JOptionPane.showMessageDialog(null, "Registro consultado exitosamente");
+        }
+        else if(vista.btnEditar == evento.getSource()){
+            
+            int idServicio = Integer.parseInt(vista.txtIdSucursal.getText());
+            dia = vista.jDateChooserFechaParto.getCalendar().get(Calendar.DAY_OF_MONTH);//sacamos el dia del calandario
+            mes = vista.jDateChooserFechaParto.getCalendar().get(Calendar.MONTH) + 1;//sacamos el mes del calendario
+            anio = vista.jDateChooserFechaParto.getCalendar().get(Calendar.YEAR);//sacamos el año del calendario
+            fechaCompleta = anio+"-"+mes+"-"+dia;//concatenamos año, mes y dia para darle el formato para guardarlo en la base de datos
+            horaCompleta = vista.spinnerHora.getValue()+":"+vista.spinnerMin.getValue();
+
+            if(fechaTemporal.equals(fechaCompleta) && vista.spinnerHora.getValue().equals(horaTemporal) && vista.spinnerMin.getValue().equals(minutosTemporal) 
+                    && tipoPartoTemporal.equals(vista.txtTipoParto.getText().trim()) && nombreBebeTemporal.equals(vista.txtNombre.getText().trim())
+                    && pesoBebeTemporal == Double.parseDouble(vista.txtPeso.getText().trim()))//entra aqui si no ha elejido una fecha
+            {
+                JOptionPane.showMessageDialog(vista, "Registro modificado exitosamente");
+            }
+            else if(!modelo.validarParto(fechaCompleta, horaCompleta))//entra aqui si existe una cita el mismo dia, hora y minutos
+            {
+                modelo.conActualizar(idServicio,fechaCompleta, 
+                horaCompleta,vista.txtTipoParto.getText(),vista.txtNombre.getText(),
+                Double.parseDouble(vista.txtPeso.getText()));
+                
+                int idPaciente = vista.comboBoxPaciente.getItemAt(vista.comboBoxPaciente.getSelectedIndex()).getIdPaciente();
+                vista.tableParto.setModel(modelo.cargarDatos(datos, camposCliente, idPaciente));
+            
+            }
+            else//si no entra a ninguno se agrega la cita
+            {
+                 JOptionPane.showMessageDialog(vista, "Ya existe un registro con esa fecha, ponga otra por favor");   
+            }
+                
+            }
     }
-        
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -130,4 +213,6 @@ public class ControladorSucursal implements ActionListener, MouseListener{
     public void mouseExited(MouseEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+        
+
 }

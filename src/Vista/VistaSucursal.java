@@ -47,7 +47,7 @@ public class VistaSucursal extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaSuc = new javax.swing.JTable();
         btnBuscar1 = new javax.swing.JButton();
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnLupita2.png"))); // NOI18N
@@ -158,7 +158,7 @@ public class VistaSucursal extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaSuc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -166,7 +166,7 @@ public class VistaSucursal extends javax.swing.JFrame {
                 "Nombre", "Dirección", "Teléfono", "Correo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaSuc);
 
         btnBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnLupita2.png"))); // NOI18N
         btnBuscar1.setBorder(null);
@@ -372,7 +372,7 @@ public class VistaSucursal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable tablaSuc;
     public javax.swing.JTextField txtCorreo;
     public javax.swing.JTextField txtDireccion;
     public javax.swing.JTextField txtIdSucursal;
