@@ -13,12 +13,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Vista.VistaSucursal;
 import Modelo.ModeloSucursal;
 
 import Vista.MenuPrincipal;
 import Modelo.ModeloMenuPrincipal;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 public class ControladorSucursal implements ActionListener, PropertyChangeListener, ChangeListener, MouseListener{
@@ -166,7 +170,6 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
     public void propertyChange(PropertyChangeEvent evt) {
     }
 
-    @Override
     public void stateChanged(ChangeEvent e) {
        
     }
