@@ -5,10 +5,50 @@
  */
 package Controlador;
 
+import Modelo.ModeloMenuPrincipal;
+import Vista.MenuPrincipal;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Dania
  */
-public class ControladorMenuPrincipal {
+public class ControladorMenuPrincipal implements ActionListener {
+    ModeloMenuPrincipal modelo = new ModeloMenuPrincipal();
+    MenuPrincipal menu = new MenuPrincipal();
+    //int idEmp;
     
+    public ControladorMenuPrincipal(ModeloMenuPrincipal modelo, MenuPrincipal menu)
+    {
+        this.modelo = modelo;
+        this.menu = menu;
+    }
+
+    ControladorMenuPrincipal() {
+    
+    }
+    
+    public void iniciarVista()
+    {
+        //menu.setTitle("Biblioteca");
+        
+        menu.pack();
+        
+        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        menu.setLocationRelativeTo(null);
+        menu.setVisible(true);
+        //AdmMenu.nombreEmpleado.setText("ID: "+this.idEmp);
+        this.menu.btnCliente.addActionListener(this);
+        this.menu.btnEmpleado.addActionListener(this);
+        this.menu.btnInventario.addActionListener(this);
+        this.menu.btnRenta1.addActionListener(this);
+        this.menu.btnSucursal.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    }
 }
