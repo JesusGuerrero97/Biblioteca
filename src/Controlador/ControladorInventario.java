@@ -13,6 +13,11 @@ import javax.swing.JFrame;
 
 import Vista.VistaInventario;
 import Modelo.ModeloInventario;
+
+import Vista.VistaLibro;
+import Modelo.ModeloLibro;
+import Controlador.ControladorLibro;
+
 /**
  *
  * @author Dania
@@ -42,10 +47,36 @@ public class ControladorInventario implements ActionListener, MouseListener{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(vista.btnAgregar == e.getSource())
+        {   
+            ModeloLibro LibroMod = new ModeloLibro();
+            VistaLibro LibroVis = new VistaLibro();
+             ControladorLibro LibroCon = new ControladorLibro(LibroMod,LibroVis); 
+            LibroCon.iniciarVista();
+        }
+        if(vista.btnEditar == e.getSource())
+        {
+            ModeloLibro LibroMod = new ModeloLibro();
+            VistaLibro LibroVis = new VistaLibro();
+            
+            //LibroVis.txtIdLibro.setText(String.valueOf(vista.jTable1.getValueAt(fila, 0)));
+            ControladorLibro LibroCon = new ControladorLibro(LibroMod,LibroVis);
+            LibroCon.iniciarVista();
+        }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+    
+            if(vista.jTable1==e.getSource())
+            {
+                int fila=vista.jTable1.rowAtPoint(e.getPoint());
+                if(fila > -1)
+                {
+                    vista.txtNombre1.setText(String.valueOf(vista.jTable1.getValueAt(fila, 0)));
+                }
+            
+            }
     }
 
     @Override
