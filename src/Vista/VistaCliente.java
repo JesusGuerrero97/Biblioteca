@@ -55,6 +55,8 @@ public class VistaCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(33, 47, 60));
+        jPanel1.setAutoscrolls(true);
+        jPanel1.setDoubleBuffered(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(1083, 554));
 
         jLabel2.setBackground(new java.awt.Color(33, 47, 60));
@@ -84,6 +86,7 @@ public class VistaCliente extends javax.swing.JFrame {
                 "ID", "Nombre", "Dirección", "Teléfono", "Correo", "Libros adquiridos"
             }
         ));
+        clientes.setSurrendersFocusOnKeystroke(true);
         clientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 clientesMouseClicked(evt);
