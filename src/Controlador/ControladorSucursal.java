@@ -13,21 +13,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import Vista.VistaSucursal;
 import Modelo.ModeloSucursal;
 
 import Vista.MenuPrincipal;
 import Modelo.ModeloMenuPrincipal;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
+
 
 public class ControladorSucursal implements ActionListener, PropertyChangeListener, ChangeListener, MouseListener{
     private ModeloSucursal modelo;
@@ -133,30 +125,33 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
                 
             JOptionPane.showMessageDialog(vista, "Registro insertado exitosamente");
             limpiarVista();
+            vista.tablaSuc.setModel(modelo.cargarDatos());
         }                
-        else if(vista.btnCancelar == evento.getSource()){
+        if(vista.btnCancelar == evento.getSource()){
                 limpiarVista();
         }   
-        else if(vista.btnRegresar == evento.getSource()){
+        if(vista.btnRegresar == evento.getSource()){
             MenuPrincipal obj = new MenuPrincipal();
             ModeloMenuPrincipal modeloMenu = new ModeloMenuPrincipal();
-            //ControladorMenuPrincipal ControladorMenuPrincipal = new ControladorMenuPrincipal(modeloMenu,obj);
-            //ControladorMenuPrincipal.iniciarVista();
+            ControladorMenuPrincipal ControladorMenuPrincipal = new ControladorMenuPrincipal(modeloMenu,obj);
+            ControladorMenuPrincipal.iniciarVista();
             vista.dispose();
         }
-        else if(vista.btnBuscar1 == evento.getSource()){ 
+        if(vista.btnBuscar1 == evento.getSource()){ 
             vista.btnCancelar.setEnabled(true);
             int idSucursal = Integer.parseInt(vista.txtIdSucursal.getText());
             vista.tablaSuc.setModel(modelo.buscarDatos( idSucursal));          
-            JOptionPane.showMessageDialog(null, "Registro consultado exitosamente");
+           // JOptionPane.showMessageDialog(null, "Registro consultado exitosamente");
         }
-        else if(vista.btnEditar == evento.getSource()){
-                modelo.conActualizar(Integer.parseInt(vista.txtIdSucursal.getText()), vista.txtNombre.getText(),vista.txtDireccion.getText(),vista.txtTelefono.getText(),vista.txtCorreo.getText());
-            
+        if(vista.btnEditar == evento.getSource()){
+            modelo.conActualizar(Integer.parseInt(vista.txtIdSucursal.getText()), vista.txtNombre.getText(),vista.txtDireccion.getText(),vista.txtTelefono.getText(),vista.txtCorreo.getText());
+            vista.tablaSuc.setModel(modelo.cargarDatos());
+            limpiarVista();
         }
-        else if(vista.btnEliminar == evento.getSource()){
+        if(vista.btnEliminar == evento.getSource()){
             if(modelo.conEliminar(Integer.parseInt(vista.txtIdSucursal.getText()))){
-                
+                JOptionPane.showMessageDialog(null, "Registro eliminado");
+                vista.tablaSuc.setModel(modelo.cargarDatos());
             }
             
             /*
