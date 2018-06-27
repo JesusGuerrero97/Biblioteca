@@ -33,8 +33,8 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
     private ModeloSucursal modelo;
     private VistaSucursal vista;
     
-    String datos[][]={};
-    String[] camposCliente={"idSuc","nombre","direc", "tel","correo"};
+    //String datos[][]={};
+    //String[] camposCliente={"idSuc","nombre","direc", "tel","correo"};
     
     public ControladorSucursal(ModeloSucursal modelo, VistaSucursal vista){
         this.modelo=modelo;
@@ -55,7 +55,7 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
         vista.setLocationRelativeTo(null);
         //vista.setAlwaysOnTop( false );
         //vista.setVisible(true);
-        vista.setResizable(true);
+        vista.setResizable(false);
         vista.setTitle("Sucursal");
         transparenciaButton();
         vista.tablaSuc.setModel(modelo.cargarDatos());

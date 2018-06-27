@@ -5,8 +5,8 @@
  */
 package Controlador;
 
-import Modelo.ModeloMenuPrincipal;
-import Vista.MenuPrincipal;
+import Modelo.*;
+import Vista.*;
 
 import Modelo.ModeloInventario;
 import Vista.VistaInventario;
@@ -65,5 +65,13 @@ public class ControladorMenuPrincipal implements ActionListener {
             ControladorInventario InventarioCon = new ControladorInventario(InventarioMod,InventarioVis); 
             InventarioCon.iniciarVista();
         }
+        if(menu.btnSucursal == e.getSource())
+        {
+            VistaSucursal vista = new VistaSucursal();
+        ModeloSucursal modelo = new ModeloSucursal();
+        ControladorSucursal control = new ControladorSucursal(modelo, vista);
+        control.iniciarVista();
+        }
+        
     }
 }

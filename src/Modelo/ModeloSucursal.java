@@ -26,7 +26,7 @@ public class ModeloSucursal {
     private String vSucCor;
     
     private Conexion conexion = new Conexion();
-    DefaultTableModel modelo;
+    //DefaultTableModel modelo;
     
     public DefaultTableModel cargarDatos(){
         try
