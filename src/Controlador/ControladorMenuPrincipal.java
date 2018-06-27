@@ -7,6 +7,12 @@ package Controlador;
 
 import Modelo.ModeloMenuPrincipal;
 import Vista.MenuPrincipal;
+
+import Modelo.ModeloInventario;
+import Vista.VistaInventario;
+import Controlador.ControladorInventario;
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -21,13 +27,15 @@ public class ControladorMenuPrincipal implements ActionListener {
     MenuPrincipal menu = new MenuPrincipal();
     //int idEmp;
     
+    //ControladorInventario InventarioCon;
+    
     public ControladorMenuPrincipal(ModeloMenuPrincipal modelo, MenuPrincipal menu)
     {
         this.modelo = modelo;
         this.menu = menu;
     }
 
-    ControladorMenuPrincipal() {
+    ControladorMenuPrincipal(){
     
     }
     
@@ -50,5 +58,11 @@ public class ControladorMenuPrincipal implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(menu.btnInventario == e.getSource())
+        {   
+            ModeloInventario InventarioMod = new ModeloInventario();
+            VistaInventario InventarioVis = new VistaInventario();
+            ControladorInventario InventarioCon = new ControladorInventario(InventarioMod,InventarioVis); 
+        }
     }
 }

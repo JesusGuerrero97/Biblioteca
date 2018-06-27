@@ -83,6 +83,12 @@ public class VistaSucursal extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Correo:");
 
+        txtIdSucursal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdSucursalActionPerformed(evt);
+            }
+        });
+
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -163,10 +169,14 @@ public class VistaSucursal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Dirección", "Teléfono", "Correo"
+                "Id_Sucursal", "Nombre", "Dirección", "Teléfono", "Correo"
             }
         ));
         jScrollPane1.setViewportView(tablaSuc);
+        if (tablaSuc.getColumnModel().getColumnCount() > 0) {
+            tablaSuc.getColumnModel().getColumn(0).setResizable(false);
+            tablaSuc.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         btnBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnLupita2.png"))); // NOI18N
         btnBuscar1.setBorder(null);
@@ -313,6 +323,10 @@ public class VistaSucursal extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtIdSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdSucursalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdSucursalActionPerformed
 
     /**
      * @param args the command line arguments

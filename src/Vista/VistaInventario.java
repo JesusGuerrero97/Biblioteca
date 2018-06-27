@@ -40,12 +40,11 @@ public class VistaInventario extends javax.swing.JFrame {
         comboIdLibro = new javax.swing.JComboBox<>();
         txtNombre1 = new javax.swing.JTextField();
         btnRegresar = new javax.swing.JButton();
-        btnBuscar1 = new javax.swing.JButton();
-        btnAgregar2 = new javax.swing.JButton();
-        btnEditar2 = new javax.swing.JButton();
-        btnCancelar2 = new javax.swing.JButton();
-        btnCancelar4 = new javax.swing.JButton();
-        btnCancelar3 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 36)); // NOI18N
         jLabel1.setText("Agregar Libro");
@@ -95,7 +94,7 @@ public class VistaInventario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id_libro", "Nombre", "Autor", "Editorial", "Fecha de publicación", "Num. páginas", "Edición", "Género", "Id_sucursal", "Existencia"
+                "Id_libro", "Nombre", "Autor", "Editorial", "Fecha de publicación", "Num. páginas", "Edición", "Género", "Nombre_Sucursal", "Existencia"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -128,40 +127,45 @@ public class VistaInventario extends javax.swing.JFrame {
             }
         });
 
-        btnBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnLupita2.png"))); // NOI18N
-        btnBuscar1.setBorder(null);
-        btnBuscar1.setBorderPainted(false);
-        btnBuscar1.setContentAreaFilled(false);
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnLupita2.png"))); // NOI18N
+        btnBuscar.setBorder(null);
+        btnBuscar.setBorderPainted(false);
+        btnBuscar.setContentAreaFilled(false);
 
-        btnAgregar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnAgregar.png"))); // NOI18N
-        btnAgregar2.setBorder(null);
-        btnAgregar2.setBorderPainted(false);
-        btnAgregar2.setContentAreaFilled(false);
-
-        btnEditar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEditar3.png"))); // NOI18N
-        btnEditar2.setBorder(null);
-        btnEditar2.setBorderPainted(false);
-        btnEditar2.setContentAreaFilled(false);
-        btnEditar2.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnAgregar.png"))); // NOI18N
+        btnAgregar.setBorder(null);
+        btnAgregar.setBorderPainted(false);
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditar2ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
-        btnCancelar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnCancelar.png"))); // NOI18N
-        btnCancelar2.setBorder(null);
-        btnCancelar2.setBorderPainted(false);
-        btnCancelar2.setContentAreaFilled(false);
-        btnCancelar2.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEditar3.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.setBorderPainted(false);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelar2ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
-        btnCancelar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar.png"))); // NOI18N
-        btnCancelar4.setBorder(null);
-        btnCancelar4.setBorderPainted(false);
-        btnCancelar4.setContentAreaFilled(false);
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnCancelar.png"))); // NOI18N
+        btnCancelar.setBorder(null);
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.setContentAreaFilled(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar.png"))); // NOI18N
+        btnEliminar.setBorder(null);
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setContentAreaFilled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -174,11 +178,8 @@ public class VistaInventario extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(192, Short.MAX_VALUE)
+                .addContainerGap(91, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(174, 174, 174))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,18 +188,21 @@ public class VistaInventario extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(comboIdLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscar1)
+                                .addComponent(btnBuscar)
                                 .addGap(321, 321, 321)))
                         .addGap(256, 256, 256))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAgregar2)
+                        .addComponent(btnAgregar)
                         .addGap(31, 31, 31)
-                        .addComponent(btnEditar2)
+                        .addComponent(btnEditar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancelar4)
+                        .addComponent(btnEliminar)
                         .addGap(28, 28, 28)
-                        .addComponent(btnCancelar2)
-                        .addGap(226, 226, 226))))
+                        .addComponent(btnCancelar)
+                        .addGap(226, 226, 226))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 917, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,23 +219,18 @@ public class VistaInventario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
                         .addComponent(comboIdLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnBuscar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtNombre1, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregar2)
-                    .addComponent(btnEditar2)
-                    .addComponent(btnCancelar4)
-                    .addComponent(btnCancelar2))
+                    .addComponent(btnAgregar)
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnCancelar))
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(87, Short.MAX_VALUE))
         );
-
-        btnCancelar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar.png"))); // NOI18N
-        btnCancelar3.setBorder(null);
-        btnCancelar3.setBorderPainted(false);
-        btnCancelar3.setContentAreaFilled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -240,20 +239,10 @@ public class VistaInventario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnCancelar3)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnCancelar3)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -283,13 +272,17 @@ public class VistaInventario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
-    private void btnEditar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar2ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditar2ActionPerformed
+    }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void btnCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar2ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelar2ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,15 +321,14 @@ public class VistaInventario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnAgregar1;
-    public javax.swing.JButton btnAgregar2;
-    public javax.swing.JButton btnBuscar1;
+    public javax.swing.JButton btnBuscar;
+    public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnCancelar1;
-    public javax.swing.JButton btnCancelar2;
-    public javax.swing.JButton btnCancelar3;
-    public javax.swing.JButton btnCancelar4;
+    public javax.swing.JButton btnEditar;
     public javax.swing.JButton btnEditar1;
-    public javax.swing.JButton btnEditar2;
+    public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnRegresar;
     public javax.swing.JComboBox<String> comboIdLibro;
     private javax.swing.JLabel jLabel1;
@@ -344,7 +336,7 @@ public class VistaInventario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtNombre1;
     // End of variables declaration//GEN-END:variables

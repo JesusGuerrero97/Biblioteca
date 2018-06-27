@@ -28,20 +28,23 @@ public class ModeloSucursal {
     private Conexion conexion = new Conexion();
     DefaultTableModel modelo;
     
-    public DefaultTableModel cargarDatos(String[][] datos,String[]cabecera,int id_sucursal)
-    {
-       try
-       {
-         Connection con= conexion.abrirConexion();
-         Statement s = con.createStatement();
-        
+    public DefaultTableModel cargarDatos(){
         try
+       {
+         Connection con = conexion.abrirConexion();
+         Statement s = con.createStatement();
+         DefaultTableModel modelo;
+        
+         try
         {
-          ResultSet rs = s.executeQuery("SELECT id_sucursal, nombre_suc, direccion, telefono, coreo FROM sucursal WHERE id_sucursal = "+id_sucursal+";");
-          modelo = new DefaultTableModel(datos,cabecera);
+          ResultSet rs = s.executeQuery("SELECT id_sucursal, nombre_suc, direccion, telefono, coreo FROM sucursal;");
+          modelo = new DefaultTableModel();
           ResultSetMetaData rsMd = rs.getMetaData();
           int cantidadColumnas = rsMd.getColumnCount();
-          while(rs.next())
+          for(int i = 1; i <= cantidadColumnas; i++)
+          {
+            modelo.addColumn(rsMd.getColumnLabel(i));
+          }while(rs.next())
           {
               Object[] fila = new Object[cantidadColumnas];
               for(int i = 0; i < cantidadColumnas; i++)
@@ -56,7 +59,43 @@ public class ModeloSucursal {
          }
        }catch(SQLException e)
        {
-           JOptionPane.showMessageDialog(null, e.getMessage());
+           e.printStackTrace();
+       }
+       return null;
+    }
+    
+    public DefaultTableModel buscarDatos(int idSucursal){
+        try
+       {
+         Connection con = conexion.abrirConexion();
+         Statement s = con.createStatement();
+         DefaultTableModel modelo;
+        
+         try
+        {
+          ResultSet rs = s.executeQuery("SELECT id_sucursal, nombre_suc, direccion, telefono, coreo FROM sucursal WHERE id_sucursal = "+idSucursal+";");
+          modelo = new DefaultTableModel();
+          ResultSetMetaData rsMd = rs.getMetaData();
+          int cantidadColumnas = rsMd.getColumnCount();
+          for(int i = 1; i <= cantidadColumnas; i++)
+          {
+            modelo.addColumn(rsMd.getColumnLabel(i));
+          }while(rs.next())
+          {
+              Object[] fila = new Object[cantidadColumnas];
+              for(int i = 0; i < cantidadColumnas; i++)
+              {
+                  fila[i] = rs.getObject(i+1);
+              }
+              modelo.addRow(fila);
+          }return modelo;
+        }finally
+         {
+             conexion.cerrarConexion(con);
+         }
+       }catch(SQLException e)
+       {
+           e.printStackTrace();
        }
        return null;
     }
@@ -94,10 +133,11 @@ public class ModeloSucursal {
             Connection con = conexion.abrirConexion();
             String query = "UPDATE sucursal SET nombre_suc = ?, direccion = ?, telefono = ?, coreo = ? WHERE id_sucursal = ?";
             PreparedStatement preparedStatement = con.prepareStatement(query);
-            preparedStatement.setString(1,vSucNom);
-            preparedStatement.setString(2,vSucDir);
-            preparedStatement.setString(3, vSucTel);
-            preparedStatement.setString(4, vSucCor);
+            preparedStatement.setInt(1, vSucId);
+            preparedStatement.setString(2,vSucNom);
+            preparedStatement.setString(3,vSucDir);
+            preparedStatement.setString(4, vSucTel);
+            preparedStatement.setString(5, vSucCor);
             int resultado = preparedStatement.executeUpdate();
             
             if(resultado > 0)
@@ -111,6 +151,21 @@ public class ModeloSucursal {
                 JOptionPane.showMessageDialog(null, "Error al modificar el registro");
                 
             }
+        } catch (SQLException e) 
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    public void conEliminar( int idSucursal)
+    { 
+        try
+        {
+            Connection con = conexion.abrirConexion();
+            Statement s = con.createStatement();
+            s.executeUpdate("DELETE from sucursal where id_sucursal="+idSucursal+"") ;
+                conexion.cerrarConexion(con);
+                JOptionPane.showMessageDialog(null, "Registro eliminado");
+            
         } catch (SQLException e) 
         {
             JOptionPane.showMessageDialog(null, e.getMessage());
