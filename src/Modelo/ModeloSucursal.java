@@ -37,7 +37,7 @@ public class ModeloSucursal {
         
          try
         {
-          ResultSet rs = s.executeQuery("SELECT id_sucursal, nombre_suc, direccion, telefono, coreo FROM sucursal;");
+          ResultSet rs = s.executeQuery("SELECT id_sucursal, nombre_suc, direccion, telefono, coreo FROM sucursal where status!=0;");
           modelo = new DefaultTableModel();
           ResultSetMetaData rsMd = rs.getMetaData();
           int cantidadColumnas = rsMd.getColumnCount();
@@ -73,7 +73,7 @@ public class ModeloSucursal {
         
          try
         {
-          ResultSet rs = s.executeQuery("SELECT id_sucursal, nombre_suc, direccion, telefono, coreo FROM sucursal WHERE id_sucursal = "+idSucursal+";");
+          ResultSet rs = s.executeQuery("SELECT id_sucursal, nombre_suc, direccion, telefono, coreo FROM sucursal WHERE id_sucursal = "+idSucursal+" AND status!=0;");
           modelo = new DefaultTableModel();
           ResultSetMetaData rsMd = rs.getMetaData();
           int cantidadColumnas = rsMd.getColumnCount();
@@ -109,13 +109,14 @@ public class ModeloSucursal {
             //Para Ejecutar la consulta
             //Statement s = con.createStatement();
             //JOptionPane.showMessageDialog(null, vConFecha+"---"+vConHora+"---"+vConTipo+"---"+vConNombre+"---"+vConPeso);
-            String query  = "INSERT INTO sucursal( id_sucursal, nombre_suc, direccion, telefono, coreo) values (?,?,?,?,?)";
+            String query  = "INSERT INTO sucursal( id_sucursal, nombre_suc, direccion, telefono, coreo,status) values (?,?,?,?,?,?)";
             PreparedStatement preparedStatement = con.prepareStatement(query);
             preparedStatement.setInt(1,vSucId);
             preparedStatement.setString(2,vSucNom);
             preparedStatement.setString(3,vSucDir);
             preparedStatement.setString(4,vSucTel);
             preparedStatement.setString(5,vSucCor);
+            preparedStatement.setInt(6,1);
             preparedStatement.executeUpdate();
             //JOptionPane.showMessageDialog(null, "Registro agregado");
             conexion.cerrarConexion(con);
@@ -126,8 +127,8 @@ public class ModeloSucursal {
         }
     }
     
-    public void conActualizar( int vSucId, String vSucNom, String vSucDir, String vSucTel,String vSucCor)
-    { 
+    public boolean conActualizar( int vSucId, String vSucNom, String vSucDir, String vSucTel,String vSucCor)
+    { /*
         try
         {
             Connection con = conexion.abrirConexion();
@@ -154,7 +155,20 @@ public class ModeloSucursal {
         } catch (SQLException e) 
         {
             JOptionPane.showMessageDialog(null, e.getMessage());
-        }
+        }*/
+        try
+        {
+            Connection con = conexion .abrirConexion();
+            Statement s = con.createStatement();
+            System.out.println("UPDATE sucursal SET nombre_suc ='"+vSucNom+"', direccion = '"+vSucDir+"', telefono = '"+vSucTel+"', coreo = '"+vSucCor+"' WHERE id_sucursal = "+vSucId+";");
+            s.executeUpdate("UPDATE sucursal SET nombre_suc ='"+vSucNom+"', direccion = '"+vSucDir+"', telefono = '"+vSucTel+"', coreo = '"+vSucCor+"' WHERE id_sucursal = "+vSucId+";");
+
+            conexion.cerrarConexion(con);
+            return true;
+        
+        } catch (SQLException e) {
+            return false;
+        } 
     }
     public boolean conEliminar( int idSucursal)
     { 
@@ -162,9 +176,8 @@ public class ModeloSucursal {
         {
             Connection con = conexion.abrirConexion();
             Statement s = con.createStatement();
-            s.executeUpdate("DELETE from sucursal where id_sucursal="+idSucursal+"") ;
+            s.executeUpdate("UPDATE sucursal set status=0 where id_sucursal="+idSucursal+"") ;
                 conexion.cerrarConexion(con);
-                JOptionPane.showMessageDialog(null, "Registro eliminado");
                 return true;
             
         } catch (SQLException e) 
