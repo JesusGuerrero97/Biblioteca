@@ -75,8 +75,19 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
     
 
     @Override
-    public void mouseClicked(MouseEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void mouseClicked(MouseEvent e) {
+        if(vista.clientes == e.getSource()) {
+           int fila = vista.clientes.rowAtPoint(e.getPoint());
+           if(fila > -1) {
+               vista.txtIdCliente.setText(String.valueOf(vista.clientes.getValueAt(fila, 0)));
+               vista.txtNombre.setText(String.valueOf(vista.clientes.getValueAt(fila, 1)));
+               vista.txtDireccion.setText(String.valueOf(vista.clientes.getValueAt(fila, 2)));
+               vista.txtTelefono.setText(String.valueOf(vista.clientes.getValueAt(fila, 3)));
+               vista.txtCorreo.setText(String.valueOf(vista.clientes.getValueAt(fila, 4)));
+               //String libro = Integer.toString(libros);
+               //libro.setText(String.valueOf(vista.clientes.getValueAt(fila, 5)));
+           }
+       } //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
