@@ -26,7 +26,7 @@ public class ModeloSucursal {
     private String vSucCor;
     
     private Conexion conexion = new Conexion();
-    DefaultTableModel modelo;
+    //DefaultTableModel modelo;
     
     public DefaultTableModel cargarDatos(){
         try
@@ -156,7 +156,7 @@ public class ModeloSucursal {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-    public void conEliminar( int idSucursal)
+    public boolean conEliminar( int idSucursal)
     { 
         try
         {
@@ -165,10 +165,12 @@ public class ModeloSucursal {
             s.executeUpdate("DELETE from sucursal where id_sucursal="+idSucursal+"") ;
                 conexion.cerrarConexion(con);
                 JOptionPane.showMessageDialog(null, "Registro eliminado");
+                return true;
             
         } catch (SQLException e) 
         {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            return false;
         }
+        
     }
 }
