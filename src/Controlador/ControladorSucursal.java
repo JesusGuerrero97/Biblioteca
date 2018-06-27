@@ -13,21 +13,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import Vista.VistaSucursal;
 import Modelo.ModeloSucursal;
 
 import Vista.MenuPrincipal;
 import Modelo.ModeloMenuPrincipal;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
+
 
 public class ControladorSucursal implements ActionListener, PropertyChangeListener, ChangeListener, MouseListener{
     private ModeloSucursal modelo;
