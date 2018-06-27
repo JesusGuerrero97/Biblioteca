@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 import Vista.VistaInventario;
 import Modelo.ModeloInventario;
@@ -20,34 +20,47 @@ import Modelo.ModeloInventario;
 public class ControladorInventario implements ActionListener, MouseListener{
     private ModeloInventario modelo;
     private VistaInventario vista;
-
+    
+    public ControladorInventario(ModeloInventario modelo, VistaInventario vista){
+        this.modelo=modelo;
+        this.vista=vista;
+        this.vista.btnAgregar.addActionListener(this);
+        this.vista.btnEliminar.addActionListener(this);
+        this.vista.btnEditar.addActionListener(this);
+        this.vista.btnCancelar.addActionListener(this);
+        this.vista.btnBuscar.addActionListener(this);
+        this.vista.jTable1.addMouseListener(this);
+    }
+    
+    public void iniciarVista(){
+        vista.setTitle("Ventana de usuarios");
+        vista.pack();
+        vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vista.setLocationRelativeTo(null);
+        vista.jTable1.setModel(modelo.inventarioConsultar());
+        vista.setVisible(true);
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
