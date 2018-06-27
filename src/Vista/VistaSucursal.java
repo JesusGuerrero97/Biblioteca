@@ -49,6 +49,7 @@ public class VistaSucursal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaSuc = new javax.swing.JTable();
         btnBuscar1 = new javax.swing.JButton();
+        btnEliminar1 = new javax.swing.JButton();
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnLupita2.png"))); // NOI18N
         btnBuscar.setBorder(null);
@@ -113,7 +114,6 @@ public class VistaSucursal extends javax.swing.JFrame {
             }
         });
 
-        btnEliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Fabiola\\Documents\\Biblioteca-Imágenes\\btnEliminar.png")); // NOI18N
         btnEliminar.setBorder(null);
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
@@ -172,7 +172,6 @@ public class VistaSucursal extends javax.swing.JFrame {
                 "Id_Sucursal", "Nombre", "Dirección", "Teléfono", "Correo"
             }
         ));
-        tablaSuc.setRowSelectionAllowed(true);
         tablaSuc.setSurrendersFocusOnKeystroke(true);
         tablaSuc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -189,6 +188,11 @@ public class VistaSucursal extends javax.swing.JFrame {
         btnBuscar1.setBorder(null);
         btnBuscar1.setBorderPainted(false);
         btnBuscar1.setContentAreaFilled(false);
+
+        btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar.png"))); // NOI18N
+        btnEliminar1.setBorder(null);
+        btnEliminar1.setBorderPainted(false);
+        btnEliminar1.setContentAreaFilled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -222,7 +226,10 @@ public class VistaSucursal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCancelar)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnEliminar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(235, 235, 235))
@@ -273,8 +280,10 @@ public class VistaSucursal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEliminar1)
+                            .addComponent(btnEliminar))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -388,6 +397,7 @@ public class VistaSucursal extends javax.swing.JFrame {
     public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnEditar;
     public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnEliminar1;
     public javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
