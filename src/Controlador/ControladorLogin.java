@@ -65,8 +65,12 @@ public class ControladorLogin implements ActionListener, MouseListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(Log.btnIniciaSesion == e.getSource()) {
+        if(Log.btnIniciaSesion == e.getSource() && !Log.txtUsuario.getText().equals("") && !String.valueOf(Log.jPassword.getPassword()).equals("")) {
             verificarInicio();
+        }
+        else if(Log.txtUsuario.getText().equals("") && String.valueOf(Log.jPassword.getPassword()).equals(""))
+        {
+             JOptionPane.showMessageDialog(null, "ERROR", "Complete todos los campos", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
