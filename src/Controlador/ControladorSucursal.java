@@ -37,7 +37,7 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
         this.vista=vista;
         this.vista.tablaSuc.addMouseListener(this);
         this.vista.btnEditar.addActionListener(this);
-        this.vista.btnEliminar.addActionListener(this);
+        this.vista.btnEliminar1.addActionListener(this);
         this.vista.btnAgregar.addActionListener(this);
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnRegresar.addActionListener(this);
@@ -104,9 +104,9 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
         vista.btnCancelar.setOpaque(false);
         vista.btnCancelar.setContentAreaFilled(false);
         vista.btnCancelar.setBorderPainted(false);
-        vista.btnEliminar.setOpaque(false);
-        vista.btnEliminar.setContentAreaFilled(false);
-        vista.btnEliminar.setBorderPainted(false);
+        vista.btnEliminar1.setOpaque(false);
+        vista.btnEliminar1.setContentAreaFilled(false);
+        vista.btnEliminar1.setBorderPainted(false);
         vista.btnEditar.setOpaque(false);
         vista.btnEditar.setContentAreaFilled(false);
         vista.btnEditar.setBorderPainted(false);
@@ -152,7 +152,7 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
             vista.tablaSuc.setModel(modelo.cargarDatos());
             limpiarVista();
         }
-        if(vista.btnEliminar == evento.getSource()){
+        if(vista.btnEliminar1 == evento.getSource()){
             if(modelo.conEliminar(Integer.parseInt(vista.txtIdSucursal.getText()))){
                 JOptionPane.showMessageDialog(null, "Registro eliminado");
                 vista.tablaSuc.setModel(modelo.cargarDatos());
@@ -206,6 +206,4 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
     @Override
     public void mouseExited(MouseEvent e) {
     }
-        
-
 }
