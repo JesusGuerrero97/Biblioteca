@@ -23,7 +23,9 @@ import Modelo.ModeloSucursal;
 
 import Vista.MenuPrincipal;
 import Modelo.ModeloMenuPrincipal;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
@@ -49,18 +51,21 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
     public void iniciarVista(){
         vista.pack();
         vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vista.setAlwaysOnTop( true );
+        //vista.setAlwaysOnTop( true );
         vista.setLocationRelativeTo(null);
-        vista.setAlwaysOnTop( false );
-        vista.setVisible(true);
+        //vista.setAlwaysOnTop( false );
+        //vista.setVisible(true);
         vista.setResizable(true);
         vista.setTitle("Sucursal");
         transparenciaButton();
-        
-        vista.setAlwaysOnTop( false );
+        vista.tablaSuc.setModel(modelo.cargarDatos());
+        //vista.setAlwaysOnTop( false );
         vista.setVisible(true);
-        deshabilitarElementos();
+        //deshabilitarElementos();
     }
+    
+    /*
+    
     public void deshabilitarElementos()
     {
         vista.btnCancelar.setEnabled(false);
@@ -68,7 +73,7 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
         /*vista.txtCorreo.setEnabled(false);
         vista.txtNombre.setEnabled(false);
         vista.txtDireccion.setEnabled(false);
-        vista.txtTelefono.setEnabled(false);*/
+        vista.txtTelefono.setEnabled(false);
     }
     
     public void habilitarElementos()
@@ -91,7 +96,7 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
         vista.txtTelefono.setText("");
         vista.btnCancelar.setEnabled(false);
         vista.btnAgregar.setEnabled(false);
-    }
+    }*/
     
     public void transparenciaButton(){
         vista.btnRegresar.setOpaque(false);
@@ -124,15 +129,13 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
     
     public void actionPerformed(ActionEvent evento){
         if(vista.btnAgregar == evento.getSource()){
-                    modelo.agregarSucursal(Integer.parseInt(vista.txtIdSucursal.getText()), vista.txtNombre.getText(),vista.txtDireccion.getText(),
-                    vista.txtTelefono.getText(),vista.txtCorreo.getText());
+            modelo.agregarSucursal(Integer.parseInt(vista.txtIdSucursal.getText()), vista.txtNombre.getText(),vista.txtDireccion.getText(), vista.txtTelefono.getText(),vista.txtCorreo.getText());
                 
-                    JOptionPane.showMessageDialog(vista, "Registro insertado exitosamente");
-                    limpiarVista();
-        }                 
+            JOptionPane.showMessageDialog(vista, "Registro insertado exitosamente");
+            limpiarVista();
+        }                
         else if(vista.btnCancelar == evento.getSource()){
                 limpiarVista();
-            
         }   
         else if(vista.btnRegresar == evento.getSource()){
             MenuPrincipal obj = new MenuPrincipal();
@@ -143,41 +146,21 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
         }
         else if(vista.btnBuscar1 == evento.getSource()){ 
             vista.btnCancelar.setEnabled(true);
-            int id_sucursal = vista.tablaSuc.setModel(modelo.cargarDatos(datos, camposCliente, id_sucursal));         
+            int idSucursal = Integer.parseInt(vista.txtIdSucursal.getText());
+            vista.tablaSuc.setModel(modelo.buscarDatos( idSucursal));          
             JOptionPane.showMessageDialog(null, "Registro consultado exitosamente");
         }
         else if(vista.btnEditar == evento.getSource()){
+                modelo.conActualizar(Integer.parseInt(vista.txtIdSucursal.getText()), vista.txtNombre.getText(),vista.txtDireccion.getText(),vista.txtTelefono.getText(),vista.txtCorreo.getText());
             
-            int idServicio = Integer.parseInt(vista.txtIdSucursal.getText());
-            dia = vista.jDateChooserFechaParto.getCalendar().get(Calendar.DAY_OF_MONTH);//sacamos el dia del calandario
-            mes = vista.jDateChooserFechaParto.getCalendar().get(Calendar.MONTH) + 1;//sacamos el mes del calendario
-            anio = vista.jDateChooserFechaParto.getCalendar().get(Calendar.YEAR);//sacamos el año del calendario
-            fechaCompleta = anio+"-"+mes+"-"+dia;//concatenamos año, mes y dia para darle el formato para guardarlo en la base de datos
-            horaCompleta = vista.spinnerHora.getValue()+":"+vista.spinnerMin.getValue();
-
-            if(fechaTemporal.equals(fechaCompleta) && vista.spinnerHora.getValue().equals(horaTemporal) && vista.spinnerMin.getValue().equals(minutosTemporal) 
-                    && tipoPartoTemporal.equals(vista.txtTipoParto.getText().trim()) && nombreBebeTemporal.equals(vista.txtNombre.getText().trim())
-                    && pesoBebeTemporal == Double.parseDouble(vista.txtPeso.getText().trim()))//entra aqui si no ha elejido una fecha
-            {
-                JOptionPane.showMessageDialog(vista, "Registro modificado exitosamente");
-            }
-            else if(!modelo.validarParto(fechaCompleta, horaCompleta))//entra aqui si existe una cita el mismo dia, hora y minutos
-            {
-                modelo.conActualizar(idServicio,fechaCompleta, 
-                horaCompleta,vista.txtTipoParto.getText(),vista.txtNombre.getText(),
-                Double.parseDouble(vista.txtPeso.getText()));
-                
-                int idPaciente = vista.comboBoxPaciente.getItemAt(vista.comboBoxPaciente.getSelectedIndex()).getIdPaciente();
-                vista.tableParto.setModel(modelo.cargarDatos(datos, camposCliente, idPaciente));
+        }
+        else if(vista.btnEliminar == evento.getSource()){
+            int idSucursal = Integer.parseInt(vista.txtIdSucursal.getText());
             
-            }
-            else//si no entra a ninguno se agrega la cita
-            {
-                 JOptionPane.showMessageDialog(vista, "Ya existe un registro con esa fecha, ponga otra por favor");   
-            }
-                
-            }
-    }
+            modelo.conEliminar(idSucursal);
+            JOptionPane.showMessageDialog(null, "Registro eliminado exitosamente");
+        }
+        }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
@@ -190,8 +173,18 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void mouseClicked(MouseEvent e) { //To change body of generated methods, choose Tools | Templates.
+         if(vista.tablaSuc== e.getSource()){
+            int fila=vista.tablaSuc.rowAtPoint(e.getPoint());
+            if(fila > -1)
+            {
+                vista.txtIdSucursal.setText(String.valueOf(vista.tablaSuc.getValueAt(fila, 0)));
+                vista.txtNombre.setText(String.valueOf(vista.tablaSuc.getValueAt(fila, 1)));
+                vista.txtDireccion.setText(String.valueOf(vista.tablaSuc.getValueAt( fila, 2)));
+                vista.txtTelefono.setText(String.valueOf(vista.tablaSuc.getValueAt( fila, 3)));
+                vista.txtCorreo.setText(String.valueOf(vista.tablaSuc.getValueAt( fila, 4)));
+            }
+        }  
     }
 
     @Override
