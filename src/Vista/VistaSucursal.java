@@ -172,6 +172,11 @@ public class VistaSucursal extends javax.swing.JFrame {
                 "Id_Sucursal", "Nombre", "Dirección", "Teléfono", "Correo"
             }
         ));
+        tablaSuc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaSucMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaSuc);
         if (tablaSuc.getColumnModel().getColumnCount() > 0) {
             tablaSuc.getColumnModel().getColumn(0).setResizable(false);
@@ -327,6 +332,10 @@ public class VistaSucursal extends javax.swing.JFrame {
     private void txtIdSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdSucursalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdSucursalActionPerformed
+
+    private void tablaSucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaSucMouseClicked
+  
+    }//GEN-LAST:event_tablaSucMouseClicked
 
     /**
      * @param args the command line arguments

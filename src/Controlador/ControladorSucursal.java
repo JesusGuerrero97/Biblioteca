@@ -155,21 +155,25 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
             
         }
         else if(vista.btnEliminar == evento.getSource()){
+            if(modelo.conEliminar(Integer.parseInt(vista.txtIdSucursal.getText()))){
+                
+            }
+            
+            /*
             int idSucursal = Integer.parseInt(vista.txtIdSucursal.getText());
             
             modelo.conEliminar(idSucursal);
-            JOptionPane.showMessageDialog(null, "Registro eliminado exitosamente");
+            JOptionPane.showMessageDialog(null, "Registro eliminado exitosamente");*/
         }
         }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void stateChanged(ChangeEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     @Override
@@ -180,31 +184,29 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
             {
                 vista.txtIdSucursal.setText(String.valueOf(vista.tablaSuc.getValueAt(fila, 0)));
                 vista.txtNombre.setText(String.valueOf(vista.tablaSuc.getValueAt(fila, 1)));
-                vista.txtDireccion.setText(String.valueOf(vista.tablaSuc.getValueAt( fila, 2)));
-                vista.txtTelefono.setText(String.valueOf(vista.tablaSuc.getValueAt( fila, 3)));
-                vista.txtCorreo.setText(String.valueOf(vista.tablaSuc.getValueAt( fila, 4)));
+                vista.txtDireccion.setText(String.valueOf(vista.tablaSuc.getValueAt(fila, 2)));
+                vista.txtTelefono.setText(String.valueOf(vista.tablaSuc.getValueAt(fila, 3)));
+                vista.txtCorreo.setText(String.valueOf(vista.tablaSuc.getValueAt(fila, 4)));
             }
         }  
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
         
 
