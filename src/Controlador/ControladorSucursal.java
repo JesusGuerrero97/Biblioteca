@@ -19,6 +19,8 @@ import Modelo.ModeloSucursal;
 
 import Vista.MenuPrincipal;
 import Modelo.ModeloMenuPrincipal;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 public class ControladorSucursal implements ActionListener, PropertyChangeListener, ChangeListener, MouseListener{
@@ -203,6 +205,4 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
     @Override
     public void mouseExited(MouseEvent e) {
     }
-        
-
 }
