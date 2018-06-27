@@ -72,6 +72,13 @@ public class ControladorMenuPrincipal implements ActionListener {
         ControladorSucursal control = new ControladorSucursal(modelo, vista);
         control.iniciarVista();
         }
+        if(menu.btnCliente == e.getSource())
+        {
+            VistaCliente vista = new VistaCliente();
+        ModeloCliente modelo = new ModeloCliente();
+        ControladorCliente control = new ControladorCliente(modelo, vista);
+        control.iniciarVista();
+        }
         
     }
 }
