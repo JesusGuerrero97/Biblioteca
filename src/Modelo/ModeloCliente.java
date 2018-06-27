@@ -43,7 +43,7 @@ public class ModeloCliente {
             Connection con = conexion .abrirConexion();
             Statement s = con.createStatement();
             System.out.println("update libro set nombre_cli = '"+nombre+"', direccion = '"+direccion+"', telefono = '"+telefono+"', correo = '"+correo+"', libros_adq = '"+librosadq+ "' where id_cliente = "+id+"");
-            s.executeUpdate("update biblioteca.libro set nombre_cli = '"+nombre+"', direccion = '"+direccion+"', telefono = '"+telefono+"', correo = '"+correo+"', libros_adq = '"+librosadq+ "' where id_cliente = '"+id+"';");
+            s.executeUpdate("update biblioteca.cliente set nombre_cli = '"+nombre+"', direccion = '"+direccion+"', telefono = '"+telefono+"', correo = '"+correo+"', libros_adq = '"+librosadq+ "' where id_cliente = '"+id+"';");
 
             conexion.cerrarConexion(con);
             return true;
@@ -64,5 +64,36 @@ public class ModeloCliente {
         } catch (SQLException e) {
             return false;
         } 
+    }
+        public DefaultTableModel usuariosModel() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        try {
+            Connection connection = conexion.abrirConexion();
+            try {
+                Statement st = connection.createStatement();
+                ResultSet rS = st.executeQuery("SELECT * FROM alumnos");
+                ResultSetMetaData rsMd = rS.getMetaData();
+                modelo.addColumn("Id");
+                modelo.addColumn("Nombre");
+                modelo.addColumn("Direccion");
+                modelo.addColumn("Telefono");
+                modelo.addColumn("Correo");
+                modelo.addColumn("Libros Adquiridos");
+                
+                
+                while(rS.next()) {
+                    Object fila[] = new Object[rsMd.getColumnCount()];
+                    for(int i=0; i<rsMd.getColumnCount(); i++) {
+                        fila[i] = rS.getObject(rsMd.getColumnName(i + 1));
+                    }
+                    modelo.addRow(fila);
+                }
+            }finally {
+                conexion.cerrarConexion(connection);
+            }
+        } catch (SQLException ex) {
+            modelo = null;
+        }
+        return modelo;
     }
 }
