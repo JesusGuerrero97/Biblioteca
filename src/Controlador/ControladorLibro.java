@@ -23,6 +23,7 @@ import java.util.Date;
 public class ControladorLibro implements ActionListener, MouseListener{
     private ModeloLibro modelo;
     private VistaLibro vista;
+    
     //private Date fecha_ini;
     
     public void transparenciaButton(){
@@ -44,17 +45,18 @@ public class ControladorLibro implements ActionListener, MouseListener{
     @Override
     public void actionPerformed(ActionEvent e) {
           if(vista.btnAgregar == e.getSource()) {
-//            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//            String fechaBD = df.format(vista.jDateChooserAddLibro.getDate());
-//            this.fecha_ini = vista.jDateChooserAddLibro.getDate();
-            if(modelo.insertarLibro(vista.txtNombre.getText(), vista.txtAutor.getText(), vista.txtEditorial.getText(),vista.jDateChooserAddLibro.getDate(), vista.txtEdicion.getText(), vista.txtGenero.getText(), vista.txtNumPag.getText(), Integer.parseInt(vista.txtIdSucursal.getText()), Integer.parseInt(vista.txtExistencia.getText()))) {
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String fechaBD = df.format(vista.jDateChooserAddLibro.getDate());
+            //this.fecha_ini = vista.jDateChooserAddLibro.getDate();
+            modelo.insertarLibro(Integer.parseInt(vista.txtIdLibro.getText()), vista.txtNombre.getText(), vista.txtAutor.getText(), vista.txtEditorial.getText(),fechaBD, Integer.parseInt(vista.txtNumPag.getText()), vista.txtEdicion.getText(), vista.txtGenero.getText(), Integer.parseInt(vista.txtIdSucursal.getText()), Integer.parseInt(vista.txtExistencia.getText()));
                 
                 limpiar();
-            }
+            
         }
         if(vista.btnEditar == e.getSource()) {
-            if(modelo.modificarLibro(Integer.parseInt(vista.txtIdLibro.getText()),vista.txtNombre.getText(), vista.txtAutor.getText(), vista.txtEditorial.getText(),vista.jDateChooserAddLibro.getDate(), vista.txtEdicion.getText(), vista.txtGenero.getText(), vista.txtNumPag.getText(), Integer.parseInt(vista.txtIdSucursal.getText()), Integer.parseInt(vista.txtExistencia.getText()))) {
-                
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String fechaBD = df.format(vista.jDateChooserAddLibro.getDate());
+            if(modelo.modificarLibro(Integer.parseInt(vista.txtIdLibro.getText()), vista.txtNombre.getText(), vista.txtAutor.getText(), vista.txtEditorial.getText(),fechaBD, Integer.parseInt(vista.txtNumPag.getText()), vista.txtEdicion.getText(), vista.txtGenero.getText(), Integer.parseInt(vista.txtIdSucursal.getText()), Integer.parseInt(vista.txtExistencia.getText()))) {
                 limpiar();
             }
         }
@@ -101,7 +103,7 @@ public class ControladorLibro implements ActionListener, MouseListener{
         vista.txtExistencia.setText("");
     }
     public void iniciarVista() {
-        vista.setTitle("Usuarios");
+        vista.setTitle("Libros");
         vista.setVisible(true);
         vista.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
        
