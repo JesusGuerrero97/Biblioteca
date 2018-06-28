@@ -26,6 +26,7 @@ import javax.swing.event.ChangeEvent;
 public class ControladorEmpleado implements ActionListener, MouseListener{
     private ModeloEmpleado modelo;
     private VistaEmpleado vista;
+   
     
     public ControladorEmpleado(ModeloEmpleado Modelo, VistaEmpleado Vista)
 {       this.modelo = Modelo;
@@ -80,7 +81,8 @@ public class ControladorEmpleado implements ActionListener, MouseListener{
     
     public void actionPerformed(ActionEvent evento){
         if(vista.btnAgregar == evento.getSource()){
-            modelo.agregarSucursal(Integer.parseInt(vista.txtIdEmp.getText()), vista.txtNombre.getText(),vista.txtDireccion.getText(), vista.txtTelefono.getText(), vista.txtCorreo.getText(), Integer.parseInt(vista.txtIdSucursal.getText()));
+            int status=1;
+            modelo.agregarSucursal(Integer.parseInt(vista.txtIdEmp.getText()), vista.txtNombre.getText(),vista.txtDireccion.getText(), vista.txtTelefono.getText(), vista.txtCorreo.getText(), Integer.parseInt(vista.txtIdSucursal.getText()), status);
                 
             JOptionPane.showMessageDialog(vista, "Registro insertado exitosamente");
             limpiar();
@@ -104,12 +106,14 @@ public class ControladorEmpleado implements ActionListener, MouseListener{
         }
         if(vista.btnEditar1 == evento.getSource()){
             modelo.conActualizar(Integer.parseInt(vista.txtIdEmp.getText()), vista.txtNombre.getText(),vista.txtDireccion.getText(),vista.txtTelefono.getText(),vista.txtCorreo.getText(), Integer.parseInt(vista.txtIdSucursal.getText()));
+            JOptionPane.showMessageDialog(null, "Registro modificado");
             vista.empleado.setModel(modelo.cargarDatos());
             limpiar();
         }
         if(vista.btnEliminar2 == evento.getSource()){
             if(modelo.conEliminar(Integer.parseInt(vista.txtIdEmp.getText()))){
                 JOptionPane.showMessageDialog(null, "Registro eliminado");
+                limpiar();
                 vista.empleado.setModel(modelo.cargarDatos());
             }
             
