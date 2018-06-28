@@ -146,6 +146,8 @@ public class VistaCliente extends javax.swing.JFrame {
         btnAgregar.setBorder(null);
         btnAgregar.setBorderPainted(false);
         btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setFocusPainted(false);
+        btnAgregar.setFocusable(false);
         btnAgregar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnAgregar2.png"))); // NOI18N
         btnAgregar.setRequestFocusEnabled(false);
 
@@ -153,7 +155,10 @@ public class VistaCliente extends javax.swing.JFrame {
         btnEditar1.setBorder(null);
         btnEditar1.setBorderPainted(false);
         btnEditar1.setContentAreaFilled(false);
-        btnEditar1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEditar2.png"))); // NOI18N
+        btnEditar1.setFocusPainted(false);
+        btnEditar1.setFocusable(false);
+        btnEditar1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/BTNEDITAR.png"))); // NOI18N
+        btnEditar1.setRequestFocusEnabled(false);
         btnEditar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditar1ActionPerformed(evt);
@@ -165,6 +170,8 @@ public class VistaCliente extends javax.swing.JFrame {
         btnRegresar.setBorderPainted(false);
         btnRegresar.setContentAreaFilled(false);
         btnRegresar.setDefaultCapable(false);
+        btnRegresar.setFocusPainted(false);
+        btnRegresar.setFocusable(false);
         btnRegresar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnRegresar2.png"))); // NOI18N
         btnRegresar.setRequestFocusEnabled(false);
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -177,6 +184,8 @@ public class VistaCliente extends javax.swing.JFrame {
         btnCancelar.setBorder(null);
         btnCancelar.setBorderPainted(false);
         btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setFocusPainted(false);
+        btnCancelar.setFocusable(false);
         btnCancelar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/botoncancelar.png"))); // NOI18N
         btnCancelar.setRequestFocusEnabled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +198,8 @@ public class VistaCliente extends javax.swing.JFrame {
         btnEliminar2.setBorder(null);
         btnEliminar2.setBorderPainted(false);
         btnEliminar2.setContentAreaFilled(false);
+        btnEliminar2.setFocusPainted(false);
+        btnEliminar2.setFocusable(false);
         btnEliminar2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar2.png"))); // NOI18N
         btnEliminar2.setRequestFocusEnabled(false);
         btnEliminar2.addActionListener(new java.awt.event.ActionListener() {
@@ -204,9 +215,9 @@ public class VistaCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(btnRegresar)
-                        .addGap(329, 329, 329)
+                        .addGap(32, 32, 32)
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(303, 303, 303)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(271, 271, 271)
@@ -254,15 +265,11 @@ public class VistaCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2)
-                                .addGap(30, 30, 30)))
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnBuscar)
@@ -274,7 +281,7 @@ public class VistaCliente extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -298,7 +305,7 @@ public class VistaCliente extends javax.swing.JFrame {
                         .addComponent(btnEliminar)))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
