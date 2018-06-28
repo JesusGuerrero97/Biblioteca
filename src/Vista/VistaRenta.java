@@ -50,13 +50,13 @@ public class VistaRenta extends javax.swing.JFrame {
         txtagoExtravio = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaRenta = new javax.swing.JTable();
         btnRegresar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnBuscar1 = new javax.swing.JButton();
         btnAgregar2 = new javax.swing.JButton();
         btnEditar2 = new javax.swing.JButton();
-        btnCancelar4 = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,7 +131,7 @@ public class VistaRenta extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Pago por extravío:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaRenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -139,7 +139,7 @@ public class VistaRenta extends javax.swing.JFrame {
                 "Id_libro", "Id_cliente", "Id_empleado", "Fecha de renta", "Fecha de entrega", "Teléfono", "Correo", "Pago_retraso", "Pago_Extravío"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaRenta);
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnRegresar.png"))); // NOI18N
         btnRegresar.setBorder(null);
@@ -182,10 +182,10 @@ public class VistaRenta extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar.png"))); // NOI18N
-        btnCancelar4.setBorder(null);
-        btnCancelar4.setBorderPainted(false);
-        btnCancelar4.setContentAreaFilled(false);
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar.png"))); // NOI18N
+        btnEliminar.setBorder(null);
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setContentAreaFilled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -243,7 +243,7 @@ public class VistaRenta extends javax.swing.JFrame {
                         .addGap(75, 75, 75)
                         .addComponent(btnEditar2)
                         .addGap(74, 74, 74)
-                        .addComponent(btnCancelar4)
+                        .addComponent(btnEliminar)
                         .addGap(351, 351, 351))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,7 +314,7 @@ public class VistaRenta extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnEditar2)
                             .addComponent(btnAgregar2)
-                            .addComponent(btnCancelar4))
+                            .addComponent(btnEliminar))
                         .addGap(26, 26, 26)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnCancelar))
@@ -407,8 +407,8 @@ public class VistaRenta extends javax.swing.JFrame {
     public javax.swing.JButton btnAgregar2;
     public javax.swing.JButton btnBuscar1;
     public javax.swing.JButton btnCancelar;
-    public javax.swing.JButton btnCancelar4;
     public javax.swing.JButton btnEditar2;
+    public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnRegresar;
     private com.toedter.calendar.JDateChooser jDateChooserEntrega;
     public com.toedter.calendar.JDateChooser jDateChooserRenta;
@@ -425,7 +425,7 @@ public class VistaRenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable tablaRenta;
     public javax.swing.JTextField txtCorreo;
     public javax.swing.JTextField txtIdCliente;
     public javax.swing.JTextField txtIdCliente1;
