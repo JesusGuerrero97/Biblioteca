@@ -73,6 +73,12 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
 //            }
                 limpiar();
         }
+        if(vista.btnEliminar1 == e.getSource()) {
+            if(modelo.deleteCliente(Integer.parseInt(vista.txtIdCliente.getText()))) {
+                
+            }
+                limpiar();
+        }
         if(vista.btnBuscar == e.getSource()){ 
             vista.btnCancelar.setEnabled(true);
             int id_cliente = Integer.parseInt(vista.txtIdCliente.getText());
