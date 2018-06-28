@@ -92,18 +92,18 @@ public class ModeloEmpleado {
        return null;
     }
     
-    public void agregarSucursal( int vId, String vNom, String vDir, String vTel,int vIdSuc)
+    public void agregarSucursal( int vId, String vNom, String vDir, String vTel, String correo, int vIdSuc)
     {
         try
         {
             Connection con = conexion.abrirConexion();
-            String query  = "INSERT INTO empleado( id_empleado, nombre_emp, dirreccion, telefono, id_sucursal,status) values (?,?,?,?,?,?,?)";
+            String query  = "INSERT INTO empleado( id_empleado, nombre_emp, dirreccion, telefono, correo, id_sucursal,status) values (?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = con.prepareStatement(query);
             preparedStatement.setInt(1,vId);
             preparedStatement.setString(2,vNom);
             preparedStatement.setString(3,vDir);
             preparedStatement.setString(4,vTel);
-            preparedStatement.setString(5,vTel);
+            preparedStatement.setString(5,correo);
             preparedStatement.setInt(6,vIdSuc);
             preparedStatement.setInt(7,1);
             preparedStatement.executeUpdate();
@@ -115,14 +115,14 @@ public class ModeloEmpleado {
         }
     }
     
-    public boolean conActualizar( int vId, String vNom, String vDir, String vTel,int vIdSuc)
+    public boolean conActualizar( int vId, String vNom, String vDir, String vTel, String correo, int vIdSuc)
     { 
         try
         {
             Connection con = conexion .abrirConexion();
             Statement s = con.createStatement();
-            System.out.println("UPDATE empleado SET nombre_emp ='"+vNom+"', dirreccion = '"+vDir+"', telefono = '"+vTel+"', id_sucursal = '"+vIdSuc+"' WHERE id_empleado = "+vId+";");
-            s.executeUpdate("UPDATE empleado SET nombre_emp ='"+vNom+"', dirreccion = '"+vDir+"', telefono = '"+vTel+"', id_sucursal = '"+vIdSuc+"' WHERE id_empleado = "+vId+";");
+            System.out.println("UPDATE empleado SET nombre_emp ='"+vNom+"', dirreccion = '"+vDir+"', telefono = '"+vTel+"', correo = '"+correo+ ", id_sucursal = '"+vIdSuc+"' WHERE id_empleado = "+vId+";");
+            s.executeUpdate("UPDATE empleado SET nombre_emp ='"+vNom+"', dirreccion = '"+vDir+"', telefono = '"+vTel+"', correo = '"+correo+ ", id_sucursal = '"+vIdSuc+"' WHERE id_empleado = "+vId+";");
 
             conexion.cerrarConexion(con);
             return true;
