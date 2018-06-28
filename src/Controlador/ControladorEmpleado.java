@@ -23,6 +23,17 @@ import Modelo.ModeloMenuPrincipal;
 public class ControladorEmpleado implements ActionListener, MouseListener{
     private ModeloEmpleado modelo;
     private VistaEmpleado vista;
+    
+    public ControladorEmpleado(ModeloEmpleado Modelo, VistaEmpleado Vista)
+{       this.modelo = Modelo;
+        this.vista = Vista;
+        this.vista.empleado.addMouseListener(this);
+        vista.btnAgregar.addActionListener(this); //Aqui
+        vista.btnEditar1.addActionListener(this);//Aqui
+        vista.btnCancelar.addActionListener(this);//Aqui
+        vista.btnBuscar1.addActionListener(this);
+        vista.btnEliminar2.addActionListener(this);
+}
 
     @Override
     public void actionPerformed(ActionEvent evento) {
@@ -54,7 +65,7 @@ public class ControladorEmpleado implements ActionListener, MouseListener{
             vista.empleado.setModel(modelo.cargarDatos());
             limpiar();
         }
-        if(vista.btnEliminar == evento.getSource()){
+        if(vista.btnEliminar2 == evento.getSource()){
             if(modelo.conEliminar(Integer.parseInt(vista.txtIdEmp.getText()))){
                 JOptionPane.showMessageDialog(null, "Registro eliminado");
                 vista.empleado.setModel(modelo.cargarDatos());
