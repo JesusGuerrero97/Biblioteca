@@ -17,6 +17,8 @@ import Modelo.ModeloInventario;
 import Vista.VistaLibro;
 import Modelo.ModeloLibro;
 import Controlador.ControladorLibro;
+import Modelo.ModeloMenuPrincipal;
+import Vista.MenuPrincipal;
 
 /**
  *
@@ -62,6 +64,13 @@ public class ControladorInventario implements ActionListener, MouseListener{
             //LibroVis.txtIdLibro.setText(String.valueOf(vista.jTable1.getValueAt(fila, 0)));
             ControladorLibro LibroCon = new ControladorLibro(LibroMod,LibroVis);
             LibroCon.iniciarVista();
+        }
+        if(vista.btnRegresar == e.getSource()){
+            MenuPrincipal obj = new MenuPrincipal();
+            ModeloMenuPrincipal modeloMenu = new ModeloMenuPrincipal();
+            ControladorMenuPrincipal ControladorMenuPrincipal = new ControladorMenuPrincipal(modeloMenu,obj);
+            ControladorMenuPrincipal.iniciarVista();
+            vista.dispose();
         }
     }
 

@@ -27,6 +27,7 @@ public class ControladorEmpleado implements ActionListener, MouseListener{
     private ModeloEmpleado modelo;
     private VistaEmpleado vista;
 
+<<<<<<< HEAD
     
     public ControladorSucursal(ModeloSucursal modelo, VistaSucursal vista){
         this.modelo=modelo;
@@ -76,6 +77,50 @@ public class ControladorEmpleado implements ActionListener, MouseListener{
         vista.btnBuscar1.setOpaque(false);
         vista.btnBuscar1.setContentAreaFilled(false);
         vista.btnBuscar1.setBorderPainted(false);
+=======
+    @Override
+    public void actionPerformed(ActionEvent evento) {
+         if(vista.btnAgregar == evento.getSource()){
+            modelo.agregarSucursal(Integer.parseInt(vista.txtIdSucursal.getText()), vista.txtNombre.getText(),vista.txtDireccion.getText(), vista.txtTelefono.getText(),Integer.parseInt(vista.txtIdSucursal.getText()));
+                
+            JOptionPane.showMessageDialog(vista, "Registro insertado exitosamente");
+            limpiar();
+            vista.empleado.setModel(modelo.cargarDatos());
+        }                
+        if(vista.btnCancelar == evento.getSource()){
+                limpiar();
+        }   
+        if(vista.btnRegresar == evento.getSource()){
+            MenuPrincipal obj = new MenuPrincipal();
+            ModeloMenuPrincipal modeloMenu = new ModeloMenuPrincipal();
+            ControladorMenuPrincipal ControladorMenuPrincipal = new ControladorMenuPrincipal(modeloMenu,obj);
+            ControladorMenuPrincipal.iniciarVista();
+            vista.dispose();
+        }
+        if(vista.btnBuscar1 == evento.getSource()){ 
+            vista.btnCancelar.setEnabled(true);
+            int idSucursal = Integer.parseInt(vista.txtIdEmp.getText());
+            vista.empleado.setModel(modelo.buscarDatos( idSucursal));          
+           // JOptionPane.showMessageDialog(null, "Registro consultado exitosamente");
+        }
+        if(vista.btnEditar1 == evento.getSource()){
+            modelo.conActualizar(Integer.parseInt(vista.txtIdEmp.getText()), vista.txtNombre.getText(),vista.txtDireccion.getText(),vista.txtTelefono.getText(),Integer.parseInt(vista.txtIdSucursal.getText()));
+            vista.empleado.setModel(modelo.cargarDatos());
+            limpiar();
+        }
+        if(vista.btnEliminar == evento.getSource()){
+            if(modelo.conEliminar(Integer.parseInt(vista.txtIdEmp.getText()))){
+                JOptionPane.showMessageDialog(null, "Registro eliminado");
+                vista.empleado.setModel(modelo.cargarDatos());
+            }
+            
+            /*
+            int idSucursal = Integer.parseInt(vista.txtIdSucursal.getText());
+            
+            modelo.conEliminar(idSucursal);
+            JOptionPane.showMessageDialog(null, "Registro eliminado exitosamente");*/
+        }
+>>>>>>> 6cf44b717b8b71ece1637ff886b2da5b4309258b
     }
     public void limpiarVista(){
         vista.txtIdSucursal.setText("");
@@ -131,6 +176,7 @@ public class ControladorEmpleado implements ActionListener, MouseListener{
 
 
     @Override
+<<<<<<< HEAD
     public void mouseClicked(MouseEvent e) { //To change body of generated methods, choose Tools | Templates.
          if(vista.tablaSuc== e.getSource()){
             int fila=vista.tablaSuc.rowAtPoint(e.getPoint());
@@ -141,27 +187,48 @@ public class ControladorEmpleado implements ActionListener, MouseListener{
                 vista.txtDireccion.setText(String.valueOf(vista.tablaSuc.getValueAt(fila, 2)));
                 vista.txtTelefono.setText(String.valueOf(vista.tablaSuc.getValueAt(fila, 3)));
                 vista.txtCorreo.setText(String.valueOf(vista.tablaSuc.getValueAt(fila, 4)));
+=======
+    public void mouseClicked(MouseEvent e) {
+         //To change body of generated methods, choose Tools | Templates.
+          if(vista.empleado== e.getSource()){
+            int fila=vista.empleado.rowAtPoint(e.getPoint());
+            if(fila > -1)
+            {
+                vista.txtIdSucursal.setText(String.valueOf(vista.empleado.getValueAt(fila, 0)));
+                vista.txtNombre.setText(String.valueOf(vista.empleado.getValueAt(fila, 1)));
+                vista.txtDireccion.setText(String.valueOf(vista.empleado.getValueAt(fila, 2)));
+                vista.txtTelefono.setText(String.valueOf(vista.empleado.getValueAt(fila, 3)));
+                vista.txtIdSucursal.setText(String.valueOf(vista.empleado.getValueAt(fila, 4)));
+>>>>>>> 6cf44b717b8b71ece1637ff886b2da5b4309258b
             }
         }  
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
+    }
+    public void limpiar() {
+        vista.txtNombre.setText("");
+        vista.txtCorreo.setText("");
+        vista.txtDireccion.setText("");
+        vista.txtIdEmp.setText("");
+        vista.txtTelefono.setText("");
+        vista.txtIdSucursal.setText("");
     }
 }

@@ -37,6 +37,7 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
         vista.btnEditar1.addActionListener(this);//Aqui
         vista.btnCancelar.addActionListener(this);//Aqui
         vista.btnBuscar.addActionListener(this);
+        vista.btnEliminar2.addActionListener(this);
         
 }
     public void iniciarVista() 
@@ -57,6 +58,9 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
             
            if(modelo.agregarCliente(Integer.parseInt(vista.txtIdCliente.getText()), vista.txtNombre.getText(), vista.txtDireccion.getText(), vista.txtTelefono.getText(), vista.txtCorreo.getText(), libros)){
                 limpiar();
+                JOptionPane.showMessageDialog(vista, "Registro insertado exitosamente");
+            limpiar();
+            vista.clientes.setModel(modelo.cargarDatos());
             } 
                 
             
@@ -65,6 +69,10 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
             
             if(modelo.modificarCliente(Integer.parseInt(vista.txtIdCliente.getText()), vista.txtNombre.getText(), vista.txtDireccion.getText(), vista.txtTelefono.getText(), vista.txtCorreo.getText(), libros)){
                 limpiar();
+                JOptionPane.showMessageDialog(vista, "Registro editado exitosamente");
+            limpiar();
+            vista.clientes.setModel(modelo.cargarDatos());
+                
             }
         }
         if(vista.btnCancelar == e.getSource()) {
@@ -73,9 +81,11 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
 //            }
                 limpiar();
         }
-        if(vista.btnEliminar1 == e.getSource()) {
+        if(vista.btnEliminar2 == e.getSource()) {
             if(modelo.deleteCliente(Integer.parseInt(vista.txtIdCliente.getText()))) {
-                
+                JOptionPane.showMessageDialog(vista, "Registro eliminado exitosamente");
+                limpiar();
+                vista.clientes.setModel(modelo.cargarDatos());
             }
                 limpiar();
         }
