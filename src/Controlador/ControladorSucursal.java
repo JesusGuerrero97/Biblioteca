@@ -60,39 +60,6 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
         //deshabilitarElementos();
     }
     
-    /*
-    
-    public void deshabilitarElementos()
-    {
-        vista.btnCancelar.setEnabled(false);
-        vista.btnEditar.setEnabled(false);
-        /*vista.txtCorreo.setEnabled(false);
-        vista.txtNombre.setEnabled(false);
-        vista.txtDireccion.setEnabled(false);
-        vista.txtTelefono.setEnabled(false);
-    }
-    
-    public void habilitarElementos()
-    {
-        
-        vista.txtCorreo.setEnabled(true);
-        vista.txtNombre.setEnabled(true);
-        vista.txtDireccion.setEnabled(true);
-        vista.txtTelefono.setEnabled(true);
-    }
-    public void deshabilitarElementosCancelar()
-    {
-        vista.tablaSuc.setEnabled(false);
-        vista.btnEditar.setEnabled(false);
-        vista.btnBuscar1.setEnabled(true);
-        vista.tablaSuc.setModel(modelo.cargarDatos(datos, camposCliente, 0));
-        vista.txtCorreo.setText("");
-        vista.txtNombre.setText("");
-        vista.txtDireccion.setText("");
-        vista.txtTelefono.setText("");
-        vista.btnCancelar.setEnabled(false);
-        vista.btnAgregar.setEnabled(false);
-    }*/
     
     public void transparenciaButton(){
         vista.btnRegresar.setOpaque(false);

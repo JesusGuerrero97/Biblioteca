@@ -95,7 +95,11 @@ public class ControladorMenuPrincipal implements ActionListener {
         }
         if(menu.btnCerrarSesion == e.getSource())
         {
-            menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            Login MInicio = new Login();
+        ModSQLInicioSesion Log = new ModSQLInicioSesion();
+        ControladorLogin control = new ControladorLogin(Log, MInicio);
+        //control.iniciarVista();
+        MInicio.dispose();
         }
     }
 }
