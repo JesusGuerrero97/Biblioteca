@@ -105,7 +105,7 @@ public class ControladorLibro implements ActionListener, MouseListener{
     public void iniciarVista() {
         vista.setTitle("Libros");
         vista.setVisible(true);
-        vista.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+  //      vista.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
        
     }
 }
