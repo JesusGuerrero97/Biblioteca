@@ -48,7 +48,7 @@ public class VistaCliente extends javax.swing.JFrame {
         btnEditar1 = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        btnEliminar1 = new javax.swing.JButton();
+        btnEliminar2 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 36)); // NOI18N
         jLabel1.setText("Agregar Libro");
@@ -178,13 +178,13 @@ public class VistaCliente extends javax.swing.JFrame {
             }
         });
 
-        btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar.png"))); // NOI18N
-        btnEliminar1.setBorder(null);
-        btnEliminar1.setBorderPainted(false);
-        btnEliminar1.setContentAreaFilled(false);
-        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar.png"))); // NOI18N
+        btnEliminar2.setBorder(null);
+        btnEliminar2.setBorderPainted(false);
+        btnEliminar2.setContentAreaFilled(false);
+        btnEliminar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminar1ActionPerformed(evt);
+                btnEliminar2ActionPerformed(evt);
             }
         });
 
@@ -229,7 +229,7 @@ public class VistaCliente extends javax.swing.JFrame {
                                         .addGap(141, 141, 141))
                                     .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnEditar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnEliminar1))))))
+                                    .addComponent(btnEliminar2))))))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -279,7 +279,7 @@ public class VistaCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar1)))
+                        .addComponent(btnEliminar2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65))
@@ -335,9 +335,9 @@ public class VistaCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_clientesMouseClicked
 
-    private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
+    private void btnEliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminar1ActionPerformed
+    }//GEN-LAST:event_btnEliminar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -383,7 +383,7 @@ public class VistaCliente extends javax.swing.JFrame {
     public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnEditar1;
     public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnEliminar1;
+    public javax.swing.JButton btnEliminar2;
     public javax.swing.JButton btnRegresar;
     public javax.swing.JTable clientes;
     private javax.swing.JLabel jLabel1;

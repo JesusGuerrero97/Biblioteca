@@ -34,7 +34,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtIdCliente = new javax.swing.JTextField();
+        txtIdEmp = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
@@ -42,7 +42,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtIdSucursal = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        empleado = new javax.swing.JTable();
         btnBuscar1 = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnEditar1 = new javax.swing.JButton();
@@ -106,7 +106,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Id_sucursal:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        empleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -114,7 +114,12 @@ public class VistaEmpleado extends javax.swing.JFrame {
                 "Id_sucursal", "Nombre", "Dirección", "teléfono", "Correo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        empleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                empleadoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(empleado);
 
         btnBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnLupita2.png"))); // NOI18N
         btnBuscar1.setBorder(null);
@@ -146,7 +151,6 @@ public class VistaEmpleado extends javax.swing.JFrame {
             }
         });
 
-        btnEliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Fabiola\\Documents\\Biblioteca-Imágenes\\btnEliminar.png")); // NOI18N
         btnEliminar.setBorder(null);
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
@@ -199,7 +203,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtIdEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnBuscar1)
                                 .addGap(37, 37, 37)
@@ -246,10 +250,11 @@ public class VistaEmpleado extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnBuscar1))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnBuscar1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(txtIdEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(109, 109, 109)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel5)
@@ -320,6 +325,10 @@ public class VistaEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    private void empleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empleadoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_empleadoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -363,6 +372,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
     public javax.swing.JButton btnEditar1;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnRegresar;
+    public javax.swing.JTable empleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -372,10 +382,9 @@ public class VistaEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     public javax.swing.JTextField txtCorreo;
     public javax.swing.JTextField txtDireccion;
-    public javax.swing.JTextField txtIdCliente;
+    public javax.swing.JTextField txtIdEmp;
     public javax.swing.JTextField txtIdSucursal;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtTelefono;
