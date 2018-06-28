@@ -17,7 +17,24 @@ import java.sql.*;
 public class ModeloInventario {
     private Conexion conexion = new Conexion();
     
-    
+    public int buscarSucursal(String suc){
+        int result = -1;
+        try{
+            Connection con = conexion.abrirConexion();
+            if(con!=null){
+                Statement s = con.createStatement();
+                ResultSet rs = s.executeQuery("SELECT id_sucursal FROM sucursal WHERE sucursal.`nombre_suc`='"+suc+"';");
+                if(rs.next()){
+                    result = rs.getInt("id_sucursal");  
+                }
+            }
+            conexion.cerrarConexion(con);
+            return result;
+            
+        }catch(SQLException e){
+            return 0;
+        }
+    }
     public DefaultTableModel inventarioConsultar(){
         try
        {

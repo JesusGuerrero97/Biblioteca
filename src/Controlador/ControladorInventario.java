@@ -19,6 +19,10 @@ import Modelo.ModeloLibro;
 import Controlador.ControladorLibro;
 import Modelo.ModeloMenuPrincipal;
 import Vista.MenuPrincipal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,6 +31,18 @@ import Vista.MenuPrincipal;
 public class ControladorInventario implements ActionListener, MouseListener{
     private ModeloInventario modelo;
     private VistaInventario vista;
+    
+    String Id_libro="";
+    String nombre="";
+    String autor="";
+    String editorial="";
+    String edicion="";
+    String genero="";
+    Date fecha_pub;
+    String numpag="";
+    String nombre_suc="";
+    String existencia="";
+    int suc=0;
     
     public ControladorInventario(ModeloInventario modelo, VistaInventario vista){
         this.modelo=modelo;
@@ -40,7 +56,7 @@ public class ControladorInventario implements ActionListener, MouseListener{
     }
     
     public void iniciarVista(){
-        vista.setTitle("Ventana de usuarios");
+        vista.setTitle("Ventana de inventario");
         vista.pack();
         vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vista.setLocationRelativeTo(null);
@@ -51,19 +67,32 @@ public class ControladorInventario implements ActionListener, MouseListener{
     public void actionPerformed(ActionEvent e) {
         if(vista.btnAgregar == e.getSource())
         {   
-            ModeloLibro LibroMod = new ModeloLibro();
-            VistaLibro LibroVis = new VistaLibro();
-             ControladorLibro LibroCon = new ControladorLibro(LibroMod,LibroVis); 
-            LibroCon.iniciarVista();
+                ModeloLibro LibroMod = new ModeloLibro();
+                VistaLibro LibroVis = new VistaLibro();
+           
+                ControladorLibro LibroCon = new ControladorLibro(LibroMod,LibroVis); 
+                LibroCon.iniciarVista();
+                /**/
+
         }
         if(vista.btnEditar == e.getSource())
         {
             ModeloLibro LibroMod = new ModeloLibro();
             VistaLibro LibroVis = new VistaLibro();
+            LibroVis.txtIdLibro.setText(Id_libro);
+            LibroVis.txtNombre.setText(nombre);
+            LibroVis.txtAutor.setText(autor);
+            LibroVis.txtEditorial.setText(editorial);
+            LibroVis.txtEdicion.setText(edicion);
+            LibroVis.txtGenero.setText(genero);
             
-            //LibroVis.txtIdLibro.setText(String.valueOf(vista.jTable1.getValueAt(fila, 0)));
+            LibroVis.txtNumPag.setText(numpag);
+            LibroVis.txtIdSucursal.setText(nombre_suc);
+            LibroVis.txtExistencia.setText(existencia);
+            
             ControladorLibro LibroCon = new ControladorLibro(LibroMod,LibroVis);
             LibroCon.iniciarVista();
+           
         }
         if(vista.btnRegresar == e.getSource()){
             MenuPrincipal obj = new MenuPrincipal();
@@ -73,7 +102,6 @@ public class ControladorInventario implements ActionListener, MouseListener{
             vista.dispose();
         }
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
     
@@ -83,6 +111,18 @@ public class ControladorInventario implements ActionListener, MouseListener{
                 if(fila > -1)
                 {
                     vista.txtNombre1.setText(String.valueOf(vista.jTable1.getValueAt(fila, 0)));
+                    Id_libro=String.valueOf(vista.jTable1.getValueAt(fila, 0));
+                    nombre=String.valueOf(vista.jTable1.getValueAt(fila, 1));
+                    autor=String.valueOf(vista.jTable1.getValueAt(fila, 2));
+                    editorial=String.valueOf(vista.jTable1.getValueAt(fila, 3));
+                    edicion=String.valueOf(vista.jTable1.getValueAt(fila, 6));
+                    genero=String.valueOf(vista.jTable1.getValueAt(fila, 7));
+                    //fecha_pub=Date.parse(vista.jTable1.getValueAt(fila, 4));
+                    numpag=String.valueOf(vista.jTable1.getValueAt(fila, 5));
+                    suc=modelo.buscarSucursal(String.valueOf(vista.jTable1.getValueAt(fila, 8)));
+                    nombre_suc=String.valueOf(suc);
+                    existencia=String.valueOf(vista.jTable1.getValueAt(fila, 9));
+                //cboxCiudad.setSelectedItem(ciudad);
                 }
             
             }

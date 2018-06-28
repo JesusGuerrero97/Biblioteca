@@ -79,6 +79,27 @@ public class ControladorMenuPrincipal implements ActionListener {
         ControladorCliente control = new ControladorCliente(modelo, vista);
         control.iniciarVista();
         }
-        
+        if(menu.btnEmpleado == e.getSource())
+        {
+            VistaEmpleado vista = new VistaEmpleado();
+        ModeloEmpleado modelo = new ModeloEmpleado();
+        ControladorEmpleado control = new ControladorEmpleado(modelo, vista);
+        control.iniciarVista();
+        }
+        if(menu.btnRenta1 == e.getSource())
+        {
+            VistaRenta vista = new VistaRenta();
+        ModeloRenta modelo = new ModeloRenta();
+        ControladorRenta control = new ControladorRenta(modelo, vista);
+        control.iniciarVista();
+        }
+        if(menu.btnCerrarSesion == e.getSource())
+        {
+            Login MInicio = new Login();
+        ModSQLInicioSesion Log = new ModSQLInicioSesion();
+        ControladorLogin control = new ControladorLogin(Log, MInicio);
+        //control.iniciarVista();
+        MInicio.dispose();
+        }
     }
 }

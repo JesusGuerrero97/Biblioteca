@@ -98,8 +98,8 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
         if(vista.btnRegresar == e.getSource()){
             MenuPrincipal obj = new MenuPrincipal();
             ModeloMenuPrincipal modeloMenu = new ModeloMenuPrincipal();
-            //ControladorMenuPrincipal ControladorMenuPrincipal = new ControladorMenuPrincipal(modeloMenu,obj);
-            //ControladorMenuPrincipal.iniciarVista();
+            ControladorMenuPrincipal ControladorMenuPrincipal = new ControladorMenuPrincipal(modeloMenu,obj);
+            ControladorMenuPrincipal.iniciarVista();
             vista.dispose();
         }
         

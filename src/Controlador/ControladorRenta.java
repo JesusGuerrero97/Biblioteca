@@ -14,7 +14,9 @@ import javax.swing.JOptionPane;
 
 import Vista.VistaRenta;
 import Modelo.ModeloRenta;
+import Modelo.ModeloSucursal;
 import Vista.VistaLibro;
+import Vista.VistaSucursal;
 /**
  *
  * @author Dania
@@ -23,6 +25,33 @@ public class ControladorRenta implements ActionListener, MouseListener{
     private ModeloRenta modelo;
     private VistaRenta vista;
 
+     public ControladorRenta(ModeloRenta modelo, VistaRenta vista){
+        this.modelo=modelo;
+        this.vista=vista;
+        this.vista.tablaRenta.addMouseListener(this);
+        this.vista.btnEditar2.addActionListener(this);
+        this.vista.btnEliminar.addActionListener(this);
+        this.vista.btnAgregar2.addActionListener(this);
+        this.vista.btnCancelar.addActionListener(this);
+        this.vista.btnRegresar.addActionListener(this);
+        this.vista.btnBuscar1.addActionListener(this);
+    }
+    
+    public void iniciarVista(){
+        vista.pack();
+        vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //vista.setAlwaysOnTop( true );
+        vista.setLocationRelativeTo(null);
+        //vista.setAlwaysOnTop( false );
+        //vista.setVisible(true);
+        vista.setResizable(false);
+        vista.setTitle("Sucursal");
+            //transparenciaButton();
+            //vista.setModel(modelo.cargarDatos());
+        //vista.setAlwaysOnTop( false );
+        vista.setVisible(true);
+        //deshabilitarElementos();
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
