@@ -37,7 +37,7 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
         this.vista=vista;
         this.vista.tablaSuc.addMouseListener(this);
         this.vista.btnEditar.addActionListener(this);
-        this.vista.btnEliminar1.addActionListener(this);
+        this.vista.btnEliminar.addActionListener(this);
         this.vista.btnAgregar.addActionListener(this);
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnRegresar.addActionListener(this);
