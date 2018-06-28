@@ -163,6 +163,8 @@ public class VistaSucursal extends javax.swing.JFrame {
         btnRegresar.setBorderPainted(false);
         btnRegresar.setContentAreaFilled(false);
         btnRegresar.setDefaultCapable(false);
+        btnRegresar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnRegresar2.png"))); // NOI18N
+        btnRegresar.setRequestFocusEnabled(false);
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);

@@ -38,7 +38,7 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
         vista.btnCancelar.addActionListener(this);//Aqui
         vista.btnBuscar.addActionListener(this);
         vista.btnEliminar2.addActionListener(this);
-        
+        vista.btnRegresar.addActionListener(this);
 }
     public void iniciarVista() 
 {
@@ -133,7 +133,8 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
     }
 
     @Override
-    public void mouseEntered(MouseEvent ae) {
+    public 
+        void mouseEntered(MouseEvent ae) {
          //To change body of generated methods, choose Tools | Templates.
     }
 
