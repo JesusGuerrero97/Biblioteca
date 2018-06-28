@@ -37,6 +37,7 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
         vista.btnEditar1.addActionListener(this);//Aqui
         vista.btnCancelar.addActionListener(this);//Aqui
         vista.btnBuscar.addActionListener(this);
+        vista.btnEliminar2.addActionListener(this);
         
 }
     public void iniciarVista() 
