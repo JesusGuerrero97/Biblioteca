@@ -163,6 +163,6 @@ public class ControladorEmpleado implements ActionListener, MouseListener{
         vista.txtDireccion.setText("");
         vista.txtIdEmp.setText("");
         vista.txtTelefono.setText("");
-        vista.txtIdEmp.setText("");
+        vista.txtIdSucursal.setText("");
     }
 }

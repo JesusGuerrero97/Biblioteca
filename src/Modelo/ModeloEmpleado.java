@@ -29,7 +29,7 @@ public class ModeloEmpleado {
         
          try
         {
-          ResultSet rs = s.executeQuery("SELECT id_emp, nombre_emp, dirreccion, telefono, id_sucursal FROM empleado where status!=0;");
+          ResultSet rs = s.executeQuery("SELECT id_emp, nombre_emp, dirrecion, telefono, correo, id_sucursal FROM empleado where status!=0;");
           modelo = new DefaultTableModel();
           ResultSetMetaData rsMd = rs.getMetaData();
           int cantidadColumnas = rsMd.getColumnCount();
@@ -65,7 +65,7 @@ public class ModeloEmpleado {
         
          try
         {
-          ResultSet rs = s.executeQuery("SELECT id_empleado, nombre_emp, dirreccion, telefono, id_sucursal FROM empleado WHERE id_empleado = "+idEmpleado+" AND status!=0;");
+          ResultSet rs = s.executeQuery("SELECT id_empleado, nombre_emp, dirrecion, telefono, correo, id_sucursal FROM empleado WHERE id_empleado = "+idEmpleado+" AND status!=0;");
           modelo = new DefaultTableModel();
           ResultSetMetaData rsMd = rs.getMetaData();
           int cantidadColumnas = rsMd.getColumnCount();
@@ -97,7 +97,7 @@ public class ModeloEmpleado {
         try
         {
             Connection con = conexion.abrirConexion();
-            String query  = "INSERT INTO empleado( id_empleado, nombre_emp, dirreccion, telefono, correo, id_sucursal,status) values (?,?,?,?,?,?,?)";
+            String query  = "INSERT INTO empleado( id_empleado, nombre_emp, dirrecion, telefono, correo, id_sucursal,status) values (?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = con.prepareStatement(query);
             preparedStatement.setInt(1,vId);
             preparedStatement.setString(2,vNom);
@@ -121,8 +121,8 @@ public class ModeloEmpleado {
         {
             Connection con = conexion .abrirConexion();
             Statement s = con.createStatement();
-            System.out.println("UPDATE empleado SET nombre_emp ='"+vNom+"', dirreccion = '"+vDir+"', telefono = '"+vTel+"', correo = '"+correo+ ", id_sucursal = '"+vIdSuc+"' WHERE id_empleado = "+vId+";");
-            s.executeUpdate("UPDATE empleado SET nombre_emp ='"+vNom+"', dirreccion = '"+vDir+"', telefono = '"+vTel+"', correo = '"+correo+ ", id_sucursal = '"+vIdSuc+"' WHERE id_empleado = "+vId+";");
+            System.out.println("UPDATE empleado SET nombre_emp ='"+vNom+"', dirrecion = '"+vDir+"', telefono = '"+vTel+"', correo = '"+correo+ ", id_sucursal = '"+vIdSuc+"' WHERE id_empleado = "+vId+";");
+            s.executeUpdate("UPDATE empleado SET nombre_emp ='"+vNom+"', dirrecion = '"+vDir+"', telefono = '"+vTel+"', correo = '"+correo+ ", id_sucursal = '"+vIdSuc+"' WHERE id_empleado = "+vId+";");
 
             conexion.cerrarConexion(con);
             return true;
