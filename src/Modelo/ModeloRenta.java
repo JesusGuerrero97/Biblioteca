@@ -126,17 +126,16 @@ public class ModeloRenta {
        return null;
     }
     
-    public DefaultTableModel BuscarDatos(int id_renta)
-    {
-       try
+    public DefaultTableModel buscarDatos(int id){
+        try
        {
          Connection con = conexion.abrirConexion();
          Statement s = con.createStatement();
          DefaultTableModel modelo;
         
-        try
+         try
         {
-          ResultSet rs = s.executeQuery("SELECT renta_libros.`id_renta`,libro.`nombre`,cliente.`nombre_cli`,renta_libros.`fecha_renta`,renta_libros.`fecha_entrega`,empleado.`nombre_emp`FROM  renta_libros INNER JOIN libro ON renta_libros.`id_libro`=libro.`id_libro` INNER JOIN cliente ON renta_libros.`id_cliente`=cliente.`id_cliente` INNER JOIN empleado ON renta_libros.`id_emp`=empleado.`id_emp` WHERE reta_libros.id_renta="+id_renta+";");
+          ResultSet rs = s.executeQuery("SELECT * FROM renta_libros WHERE id_renta = "+id+";");
           modelo = new DefaultTableModel();
           ResultSetMetaData rsMd = rs.getMetaData();
           int cantidadColumnas = rsMd.getColumnCount();

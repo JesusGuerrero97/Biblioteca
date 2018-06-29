@@ -19,7 +19,7 @@ public class Conexion {
             //Inicializar la conexión a la base de datos
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 
-            con = DriverManager.getConnection("jdbc:mysql://192.168.0.15:3306/biblioteca", "root", "123456"); //Motor, dirección, puerto, nombre
+            con = DriverManager.getConnection("jdbc:mysql://172.16.3.136:3306/biblioteca", "root", "123456"); //Motor, dirección, puerto, nombre
             System.out.println("Conexión realizada");
             vari=true;
         }catch(SQLException e) {

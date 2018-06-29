@@ -113,7 +113,7 @@ public class ControladorRenta implements ActionListener, MouseListener{
         if(vista.btnBuscar1 == e.getSource())
         {
             int idEmp = Integer.parseInt(vista.txtIdRenta.getText());
-            vista.tablaRenta.setModel(modelo.BuscarDatos(idEmp));
+            vista.tablaRenta.setModel(modelo.buscarDatos(idEmp));
         }
         
         if(vista.btnRegresar==e.getSource())
@@ -124,10 +124,10 @@ public class ControladorRenta implements ActionListener, MouseListener{
             ControladorMenuPrincipal.iniciarVista();
             vista.dispose();
         }
-        /*if(vista.btnCancelar== e.getSource())
+        if(vista.btnCancelar== e.getSource())
         {
             limpiarVista();
-        }*/
+        }
         
     }
 
@@ -217,8 +217,10 @@ public class ControladorRenta implements ActionListener, MouseListener{
          }
     }
     public void limpiarVista(){
-        vista.jDateChooserEntrega.setDateFormatString("");
-        vista.jDateChooserRenta.setDateFormatString("");
+//        vista.jDateChooserEntrega.setDateFormatString("");
+//        vista.jDateChooserRenta.setDateFormatString("");
+        vista.jDateChooserEntrega.setDate(null);
+        vista.jDateChooserRenta.setDate(null);
         vista.txtIdRenta.setText("");
     }
     @Override
