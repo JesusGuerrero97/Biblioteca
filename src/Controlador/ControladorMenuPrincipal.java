@@ -102,5 +102,11 @@ public class ControladorMenuPrincipal implements ActionListener {
             control.iniciarVista();
             menu.dispose();
         }
+        if(menu.btnRenta1 == e.getSource())
+        {
+            VistaRenta vRenta= new VistaRenta();
+            ModeloRenta RentaMod = new ModeloRenta();
+            ControladorRenta RentaCon = new ControladorRenta(RentaMod,vRenta);
+        }
     }
 }

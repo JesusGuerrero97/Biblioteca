@@ -27,10 +27,11 @@ public class ModeloRenta {
         {
             Connection con = conexion.abrirConexion();
             Statement s = con.createStatement();
-            System.out.println("insert into renta_libro(id_renta, id_libro, id_cliente, fecha_renta, fecha_entrega, id_emp) values("+id_renta+","+id_libro+", "+id_cliente+", '"+fecha_renta+"', '"+fecha_entrega+"', '"+id_emp+"');");
-            s.executeUpdate("insert into renta_libro(id_renta, id_libro, id_cliente, fecha_renta, fecha_entrega, id_emp) values("+id_renta+","+id_libro+", "+id_cliente+", '"+fecha_renta+"', '"+fecha_entrega+"',"+id_emp+");");
-            //INSERT INTO `biblioteca`.`libro` (`id_libro`, `nombre`, `autor`, `editorial`, `fecha_pub`, `numpag`, `edicion`, `genero`, `id_sucursal`, `existencia`) VALUES ('30', 'porpoe', 'dngf', 'dskygfs', '1998-02-22', '234', 'efds', 'edff', '3', '15');
             
+            //System.out.println("insert into renta_libro(id_renta, id_libro, id_cliente, fecha_renta, fecha_entrega, id_emp) values("+id_renta+","+id_libro+", "+id_cliente+", '"+fecha_renta+"', '"+fecha_entrega+"', '"+id_emp+"');");
+            s.executeUpdate("insert into renta_libros(id_renta, id_libro, id_cliente, fecha_renta, fecha_entrega, id_emp) values("+id_renta+","+id_libro+", "+id_cliente+", '"+fecha_renta+"', '"+fecha_entrega+"',"+id_emp+");");
+            //INSERT INTO `biblioteca`.`libro` (`id_libro`, `nombre`, `autor`, `editorial`, `fecha_pub`, `numpag`, `edicion`, `genero`, `id_sucursal`, `existencia`) VALUES ('30', 'porpoe', 'dngf', 'dskygfs', '1998-02-22', '234', 'efds', 'edff', '3', '15');
+            s.executeUpdate("update libro set existencia=existencia-1 where id_libro="+id_libro+";");
             conexion.cerrarConexion(con);
             return true;
         } catch (SQLException e) {
@@ -42,9 +43,22 @@ public class ModeloRenta {
         try
         {
             Connection con = conexion .abrirConexion();
+            Statement sel = con.createStatement();
             Statement s = con.createStatement();
-            System.out.println("update renta set id_libro = "+id_libro+", id_cliente = "+id_cliente+", fecha_renta = '"+fecha_renta+"', fecha_entrega = '"+fecha_entrega+"', id_emp = "+id_emp+" where id_renta = "+id_renta+"");
-            s.executeUpdate("update renta set id_libro = "+id_libro+", id_cliente = "+id_cliente+", fecha_renta = '"+fecha_renta+"', fecha_entrega = '"+fecha_entrega+"', id_emp = "+id_emp+" where id_renta = "+id_renta+";");
+            ResultSet rs=sel.executeQuery("SELECT id_libro FROM renta_libros where id_renta="+id_renta+"");
+            int old_id_libro=0;
+            while(rs.next())
+            {
+                old_id_libro=rs.getInt("id_libro");
+            }
+            if(old_id_libro!=id_libro)
+            {
+                s.executeUpdate("UPDATE libro SET existencia=existencia+1 WHERE id_libro="+old_id_libro+";");
+                s.executeUpdate("UPDATE libro SET existencia=existencia-1 WHERE id_libro="+id_libro+";");
+            }
+                      
+            System.out.println("update renta_libros set id_libro = "+id_libro+", id_cliente = "+id_cliente+", fecha_renta = '"+fecha_renta+"', fecha_entrega = '"+fecha_entrega+"', id_emp = "+id_emp+" where id_renta = "+id_renta+"");
+            s.executeUpdate("update renta_libros set id_libro = "+id_libro+", id_cliente = "+id_cliente+", fecha_renta = '"+fecha_renta+"', fecha_entrega = '"+fecha_entrega+"', id_emp = "+id_emp+" where id_renta = "+id_renta+";");
 
             conexion.cerrarConexion(con);
             return true;
@@ -174,10 +188,10 @@ public class ModeloRenta {
         {
          Connection con = conexion.abrirConexion();
          Statement s = con.createStatement();
-         ResultSet rs=s.executeQuery("SELECT id_libro,nombre FROM libro ORDER BY nombre");
+         ResultSet rs=s.executeQuery("SELECT id_libro,nombre FROM libro where id_sucursal=1 and existencia!=0 ORDER BY nombre");
          while(rs.next())
          {
-             comboParto.addItem(new LibroComboBox(rs.getInt("id_emp"),rs.getString("nombre_emp")));
+             comboParto.addItem(new LibroComboBox(rs.getInt("id_libro"),rs.getString("nombre")));
          }
          conexion.cerrarConexion(con);
         }
