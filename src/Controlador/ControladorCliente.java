@@ -39,6 +39,7 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
         vista.btnBuscar.addActionListener(this);
         vista.btnEliminar2.addActionListener(this);
         vista.btnRegresar.addActionListener(this);
+        vista.btnActualizar.addActionListener(this);
 }
     public void iniciarVista() 
 {
@@ -109,6 +110,11 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
             ControladorMenuPrincipal ControladorMenuPrincipal = new ControladorMenuPrincipal(modeloMenu,obj);
             ControladorMenuPrincipal.iniciarVista();
             vista.dispose();
+        }
+        if(vista.btnActualizar == e.getSource()){
+             limpiar();
+            vista.clientes.setModel(modelo.cargarDatos());  
+               
         }
         
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
