@@ -112,6 +112,10 @@ public class VistaInventario extends javax.swing.JFrame {
         btnBuscar.setBorder(null);
         btnBuscar.setBorderPainted(false);
         btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setFocusPainted(false);
+        btnBuscar.setFocusable(false);
+        btnBuscar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnLupita2.png"))); // NOI18N
+        btnBuscar.setRequestFocusEnabled(false);
 
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnAgregar.png"))); // NOI18N
         btnAgregar.setBorder(null);

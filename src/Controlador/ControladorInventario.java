@@ -54,6 +54,7 @@ public class ControladorInventario implements ActionListener, MouseListener{
         this.vista.btnEditar.addActionListener(this);
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnBuscar.addActionListener(this);
+        this.vista.btnRegresar.addActionListener(this);
         this.vista.jTable1.addMouseListener(this);
         
     }

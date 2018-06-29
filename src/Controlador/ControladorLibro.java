@@ -11,8 +11,13 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import Vista.VistaInventario;
+import Modelo.ModeloInventario;
+import Controlador.ControladorInventario;
 import Vista.VistaLibro;
 import Modelo.ModeloLibro;
+import Modelo.ModeloMenuPrincipal;
+import Vista.MenuPrincipal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,6 +46,7 @@ public class ControladorLibro implements ActionListener, MouseListener{
         this.vista.btnAgregar.addActionListener(this);
         this.vista.btnEditar.addActionListener(this);
         this.vista.btnCancelar1.addActionListener(this);
+        this.vista.btnRegresar.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -64,6 +70,13 @@ public class ControladorLibro implements ActionListener, MouseListener{
             if(modelo.deleteLibro(Integer.parseInt(vista.txtIdLibro.getText()))) {
                 
             }
+        }
+        if(vista.btnRegresar == e.getSource()){
+            VistaInventario obj = new VistaInventario();
+            ModeloInventario modelo = new ModeloInventario();
+            ControladorInventario ControladorInventario = new ControladorInventario(modelo,obj);
+            ControladorInventario.iniciarVista();
+            vista.dispose();
         }
     }
 
