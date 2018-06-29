@@ -101,6 +101,10 @@ public class VistaRenta extends javax.swing.JFrame {
         btnRegresar.setBorderPainted(false);
         btnRegresar.setContentAreaFilled(false);
         btnRegresar.setDefaultCapable(false);
+        btnRegresar.setFocusPainted(false);
+        btnRegresar.setFocusable(false);
+        btnRegresar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnRegresar2.png"))); // NOI18N
+        btnRegresar.setRequestFocusEnabled(false);
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -111,6 +115,8 @@ public class VistaRenta extends javax.swing.JFrame {
         btnCancelar.setBorder(null);
         btnCancelar.setBorderPainted(false);
         btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/CANCELAR.png"))); // NOI18N
+        btnCancelar.setRequestFocusEnabled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -131,6 +137,7 @@ public class VistaRenta extends javax.swing.JFrame {
         btnEditar2.setBorder(null);
         btnEditar2.setBorderPainted(false);
         btnEditar2.setContentAreaFilled(false);
+        btnEditar2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/BTNEDITAR.png"))); // NOI18N
         btnEditar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditar2ActionPerformed(evt);
@@ -141,6 +148,8 @@ public class VistaRenta extends javax.swing.JFrame {
         btnEliminar.setBorder(null);
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnEliminar2.png"))); // NOI18N
+        btnEliminar.setRequestFocusEnabled(false);
 
         cmbLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,7 +234,7 @@ public class VistaRenta extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -243,7 +252,7 @@ public class VistaRenta extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 60, Short.MAX_VALUE)
+                                        .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(jDateChooserRenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(40, 40, 40))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -285,9 +294,8 @@ public class VistaRenta extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
