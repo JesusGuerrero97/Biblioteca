@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -146,6 +147,61 @@ public class ModeloEmpleado {
             return false;
         }
         
+    }
+    
+    public void llenarComboClientes(JComboBox<EmpleadoComboBox> comboParto)
+    {
+        try
+        {
+         Connection con = conexion.abrirConexion();
+         Statement s = con.createStatement();
+         ResultSet rs=s.executeQuery("SELECT id_emp,nombre_emp FROM empleado ORDER BY nombre_emp");
+         while(rs.next())
+         {
+             comboParto.addItem(new EmpleadoComboBox(rs.getInt("id_emp"),rs.getString("nombre_emp")));
+         }
+         conexion.cerrarConexion(con);
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+    public class EmpleadoComboBox
+    {
+        private int id_emp;
+        private String nombre_emp;
+
+        public EmpleadoComboBox(int id_emp, String nombre_emp) {
+            this.id_emp = id_emp;
+            this.nombre_emp = nombre_emp;
+        }
+
+        public int getId_emp() {
+            return id_emp;
+        }
+
+ 
+        public void setId_emp(int id_emp) {
+            this.id_emp = id_emp;
+        }
+
+        
+        public String getNombre_emp() {
+            return nombre_emp;
+        }
+
+        
+        public void setNombre_emp(String nombre_emp) {
+            this.nombre_emp = nombre_emp;
+        }
+        
+        @Override
+        public String toString()
+        {
+            return nombre_emp;
+        }
     }
 
  

@@ -16,7 +16,7 @@ import Vista.MenuPrincipal;
  *
  * @author Dania
  */
-public class ControladorCliente implements ActionListener, MouseListener{
+public class ControladorCliente implements ActionListener, MouseListener {
     private ModeloCliente modelo;
     private VistaCliente vista;
     private int libros;
