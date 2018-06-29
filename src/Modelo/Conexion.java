@@ -14,17 +14,46 @@ public class Conexion {
     
     public Connection abrirConexion() throws SQLException{
         Connection con;
+        boolean vari=false;
         try {
             //Inicializar la conexión a la base de datos
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca", "root", ""); //Motor, dirección, puerto, nombre
+            con = DriverManager.getConnection("jdbc:mysql://192.168.0.15:3306/biblioteca", "root", "123456"); //Motor, dirección, puerto, nombre
             System.out.println("Conexión realizada");
+            vari=true;
         }catch(SQLException e) {
             System.out.print("No se pudo realizar la conexión\n");
             con = null;
         }
+        if(vari=false){
+            try {
+            //Inicializar la conexión a la base de datos
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
+            con = DriverManager.getConnection("jdbc:mysql://192.168.0.15:3306/biblioteca", "root", "123456"); //Motor, dirección, puerto, nombre
+            System.out.println("Conexión realizada");
+            vari=true;
+            }catch(SQLException e) {
+                System.out.print("No se pudo realizar la conexión\n");
+                con = null;
+            }
+        }else if(vari=false){
+            try {
+            //Inicializar la conexión a la base de datos
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
+            con = DriverManager.getConnection("jdbc:mysql://192.168.0.15:3306/biblioteca", "root", "123456"); //Motor, dirección, puerto, nombre
+            System.out.println("Conexión realizada");
+            vari=true;
+            }catch(SQLException e) {
+                System.out.print("No se pudo realizar la conexión\n");
+                con = null;
+            }
+        }
         return con;
+        
+        
     }
     
     public void cerrarConexion(Connection con) {
