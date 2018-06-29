@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 //import javax.swing.JOptionPane;
 
 import Vista.VistaInventario;
@@ -38,12 +40,12 @@ public class ControladorInventario implements ActionListener, MouseListener{
     String editorial="";
     String edicion="";
     String genero="";
-    Date fecha_pub;
+    String fecha_pub="";
     String numpag="";
     String nombre_suc="";
     String existencia="";
+    Date fecha;
     int suc=0;
-    
     public ControladorInventario(ModeloInventario modelo, VistaInventario vista){
         this.modelo=modelo;
         this.vista=vista;
@@ -53,6 +55,7 @@ public class ControladorInventario implements ActionListener, MouseListener{
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnBuscar.addActionListener(this);
         this.vista.jTable1.addMouseListener(this);
+        
     }
     
     public void iniciarVista(){
@@ -64,6 +67,7 @@ public class ControladorInventario implements ActionListener, MouseListener{
         vista.setVisible(true);
     }
     @Override
+    
     public void actionPerformed(ActionEvent e) {
         if(vista.btnAgregar == e.getSource())
         {   
@@ -85,7 +89,12 @@ public class ControladorInventario implements ActionListener, MouseListener{
             LibroVis.txtEditorial.setText(editorial);
             LibroVis.txtEdicion.setText(edicion);
             LibroVis.txtGenero.setText(genero);
+//            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+//            String fechaBD = df.format(LibroVis.jDateChooserAddLibro.getDate());
             
+            fecha = LibroVis.jDateChooserAddLibro.getDate();
+            
+            LibroVis.jDateChooserAddLibro.setDate(fecha);
             LibroVis.txtNumPag.setText(numpag);
             LibroVis.txtIdSucursal.setText(nombre_suc);
             LibroVis.txtExistencia.setText(existencia);
@@ -117,7 +126,7 @@ public class ControladorInventario implements ActionListener, MouseListener{
                     editorial=String.valueOf(vista.jTable1.getValueAt(fila, 3));
                     edicion=String.valueOf(vista.jTable1.getValueAt(fila, 6));
                     genero=String.valueOf(vista.jTable1.getValueAt(fila, 7));
-                    //fecha_pub=Date.parse(vista.jTable1.getValueAt(fila, 4));
+                    fecha_pub=String.valueOf(vista.jTable1.getValueAt(fila, 4));
                     numpag=String.valueOf(vista.jTable1.getValueAt(fila, 5));
                     suc=modelo.buscarSucursal(String.valueOf(vista.jTable1.getValueAt(fila, 8)));
                     nombre_suc=String.valueOf(suc);
