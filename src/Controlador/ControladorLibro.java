@@ -11,8 +11,13 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import Vista.VistaInventario;
+import Modelo.ModeloInventario;
+import Controlador.ControladorInventario;
 import Vista.VistaLibro;
 import Modelo.ModeloLibro;
+import Modelo.ModeloMenuPrincipal;
+import Vista.MenuPrincipal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,6 +46,7 @@ public class ControladorLibro implements ActionListener, MouseListener{
         this.vista.btnAgregar.addActionListener(this);
         this.vista.btnEditar.addActionListener(this);
         this.vista.btnCancelar1.addActionListener(this);
+        this.vista.btnRegresar.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -53,17 +59,30 @@ public class ControladorLibro implements ActionListener, MouseListener{
                 limpiar();
             
         }
-        if(vista.btnEditar == e.getSource()) {
+         if(vista.btnEditar == e.getSource()) {
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             String fechaBD = df.format(vista.jDateChooserAddLibro.getDate());
             if(modelo.modificarLibro(Integer.parseInt(vista.txtIdLibro.getText()), vista.txtNombre.getText(), vista.txtAutor.getText(), vista.txtEditorial.getText(),fechaBD, Integer.parseInt(vista.txtNumPag.getText()), vista.txtEdicion.getText(), vista.txtGenero.getText(), Integer.parseInt(vista.txtIdSucursal.getText()), Integer.parseInt(vista.txtExistencia.getText()))) {
                 limpiar();
+                
+             VistaInventario obj = new VistaInventario();
+            ModeloInventario modelo = new ModeloInventario();
+            ControladorInventario ControladorInventario = new ControladorInventario(modelo,obj);
+                ControladorInventario.iniciarVista();
+                vista.dispose();
             }
         }
         if(vista.btnCancelar1 == e.getSource()) {
             if(modelo.deleteLibro(Integer.parseInt(vista.txtIdLibro.getText()))) {
                 
             }
+        }
+        if(vista.btnRegresar == e.getSource()){
+            VistaInventario obj = new VistaInventario();
+            ModeloInventario modelo = new ModeloInventario();
+            ControladorInventario ControladorInventario = new ControladorInventario(modelo,obj);
+            ControladorInventario.iniciarVista();
+            vista.dispose();
         }
     }
 
@@ -104,6 +123,12 @@ public class ControladorLibro implements ActionListener, MouseListener{
     }
     public void iniciarVista() {
         vista.setTitle("Libros");
+         vista.setAlwaysOnTop( true );
+        vista.setAlwaysOnTop( false );
+        vista.setResizable(false);
+        vista.pack();
+        vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vista.setLocationRelativeTo(null);
         vista.setVisible(true);
   //      vista.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
        

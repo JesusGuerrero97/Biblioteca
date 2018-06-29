@@ -156,7 +156,7 @@ public class VistaLibro extends javax.swing.JFrame {
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setFocusPainted(false);
         btnAgregar.setFocusable(false);
-        btnAgregar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnAgregar.png"))); // NOI18N
+        btnAgregar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnAgregar2.png"))); // NOI18N
         btnAgregar.setRequestFocusEnabled(false);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,6 +202,8 @@ public class VistaLibro extends javax.swing.JFrame {
         btnEditar.setBorder(null);
         btnEditar.setBorderPainted(false);
         btnEditar.setContentAreaFilled(false);
+        btnEditar.setFocusPainted(false);
+        btnEditar.setFocusable(false);
         btnEditar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/BTNEDITAR.png"))); // NOI18N
         btnEditar.setRequestFocusEnabled(false);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -354,7 +356,7 @@ public class VistaLibro extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(txtExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAgregar)
                     .addComponent(btnEditar)

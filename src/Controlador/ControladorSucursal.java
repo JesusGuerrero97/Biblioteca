@@ -41,23 +41,22 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
         this.vista.btnAgregar.addActionListener(this);
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnRegresar.addActionListener(this);
-        this.vista.btnBuscar1.addActionListener(this);
+        this.vista.btnActualizar.addActionListener(this);
     }
     
     public void iniciarVista(){
         vista.pack();
         vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //vista.setAlwaysOnTop( true );
+        vista.setAlwaysOnTop( true );
         vista.setLocationRelativeTo(null);
-        //vista.setAlwaysOnTop( false );
-        //vista.setVisible(true);
+        vista.setAlwaysOnTop( false );vista.dispose();
+        vista.setVisible(true);
+        
         vista.setResizable(false);
         vista.setTitle("Sucursal");
         transparenciaButton();
         vista.tablaSuc.setModel(modelo.cargarDatos());
-        //vista.setAlwaysOnTop( false );
-        vista.setVisible(true);
-        //deshabilitarElementos();
+        
     }
     
     
@@ -77,9 +76,9 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
         vista.btnEditar.setOpaque(false);
         vista.btnEditar.setContentAreaFilled(false);
         vista.btnEditar.setBorderPainted(false);
-        vista.btnBuscar1.setOpaque(false);
-        vista.btnBuscar1.setContentAreaFilled(false);
-        vista.btnBuscar1.setBorderPainted(false);
+        vista.btnActualizar.setOpaque(false);
+        vista.btnActualizar.setContentAreaFilled(false);
+        vista.btnActualizar.setBorderPainted(false);
     }
     public void limpiarVista(){
         vista.txtIdSucursal.setText("");
@@ -108,7 +107,7 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
             ControladorMenuPrincipal.iniciarVista();
             vista.dispose();
         }
-        if(vista.btnBuscar1 == evento.getSource()){ 
+        if(vista.btnActualizar == evento.getSource()){ 
             vista.btnCancelar.setEnabled(true);
             int idSucursal = Integer.parseInt(vista.txtIdSucursal.getText());
             vista.tablaSuc.setModel(modelo.buscarDatos( idSucursal));          

@@ -41,10 +41,12 @@ public class ControladorMenuPrincipal implements ActionListener {
     
     public void iniciarVista()
     {
-        //menu.setTitle("Biblioteca");
-        
+        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        menu.setAlwaysOnTop( true );
+        menu.setAlwaysOnTop( false );
+        menu.setResizable(false);
+        menu.setTitle("Menu Principal");
         menu.pack();
-        
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menu.setLocationRelativeTo(null);
         menu.setVisible(true);
@@ -65,6 +67,7 @@ public class ControladorMenuPrincipal implements ActionListener {
             VistaInventario InventarioVis = new VistaInventario();
             ControladorInventario InventarioCon = new ControladorInventario(InventarioMod,InventarioVis); 
             InventarioCon.iniciarVista();
+            menu.dispose();
         }
         if(menu.btnSucursal == e.getSource())
         {
@@ -72,6 +75,7 @@ public class ControladorMenuPrincipal implements ActionListener {
         ModeloSucursal modelo = new ModeloSucursal();
         ControladorSucursal control = new ControladorSucursal(modelo, vista);
         control.iniciarVista();
+        menu.dispose();
         }
         if(menu.btnCliente == e.getSource())
         {
@@ -79,6 +83,7 @@ public class ControladorMenuPrincipal implements ActionListener {
         ModeloCliente modelo = new ModeloCliente();
         ControladorCliente control = new ControladorCliente(modelo, vista);
         control.iniciarVista();
+        menu.dispose();
         }
         if(menu.btnEmpleado == e.getSource())
         {
@@ -86,6 +91,7 @@ public class ControladorMenuPrincipal implements ActionListener {
             ModeloEmpleado modelo = new ModeloEmpleado();
             ControladorEmpleado control = new ControladorEmpleado(modelo, vista);
             control.iniciarVista();
+        menu.dispose();
         }
         if(menu.btnRenta1 == e.getSource())
         {
@@ -93,6 +99,7 @@ public class ControladorMenuPrincipal implements ActionListener {
             ModeloRenta modelo = new ModeloRenta();
             ControladorRenta control = new ControladorRenta(modelo, vista);
             control.iniciarVista();
+        menu.dispose();
         }
         if(menu.btnCerrarSesion == e.getSource())
         {
@@ -101,6 +108,7 @@ public class ControladorMenuPrincipal implements ActionListener {
             ControladorLogin control = new ControladorLogin(Log, MInicio);
             control.iniciarVista();
             menu.dispose();
+        menu.dispose();
         }
         if(menu.btnRenta1 == e.getSource())
         {
