@@ -77,7 +77,7 @@ public class ControladorInventario implements ActionListener, MouseListener{
            
                 ControladorLibro LibroCon = new ControladorLibro(LibroMod,LibroVis); 
                 LibroCon.iniciarVista();
-                /**/
+                vista.dispose();
 
         }
         if(vista.btnEditar == e.getSource())
@@ -90,6 +90,7 @@ public class ControladorInventario implements ActionListener, MouseListener{
             LibroVis.txtEditorial.setText(editorial);
             LibroVis.txtEdicion.setText(edicion);
             LibroVis.txtGenero.setText(genero);
+            
 //            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 //            String fechaBD = df.format(LibroVis.jDateChooserAddLibro.getDate());
             
@@ -102,7 +103,7 @@ public class ControladorInventario implements ActionListener, MouseListener{
             
             ControladorLibro LibroCon = new ControladorLibro(LibroMod,LibroVis);
             LibroCon.iniciarVista();
-           
+           vista.dispose();
         }
         if(vista.btnRegresar == e.getSource()){
             MenuPrincipal obj = new MenuPrincipal();

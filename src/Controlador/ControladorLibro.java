@@ -123,6 +123,12 @@ public class ControladorLibro implements ActionListener, MouseListener{
     }
     public void iniciarVista() {
         vista.setTitle("Libros");
+         vista.setAlwaysOnTop( true );
+        vista.setAlwaysOnTop( false );
+        vista.setResizable(false);
+        vista.pack();
+        vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vista.setLocationRelativeTo(null);
         vista.setVisible(true);
   //      vista.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
        

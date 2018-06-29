@@ -47,17 +47,16 @@ public class ControladorSucursal implements ActionListener, PropertyChangeListen
     public void iniciarVista(){
         vista.pack();
         vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //vista.setAlwaysOnTop( true );
+        vista.setAlwaysOnTop( true );
         vista.setLocationRelativeTo(null);
-        //vista.setAlwaysOnTop( false );
-        //vista.setVisible(true);
+        vista.setAlwaysOnTop( false );vista.dispose();
+        vista.setVisible(true);
+        
         vista.setResizable(false);
         vista.setTitle("Sucursal");
         transparenciaButton();
         vista.tablaSuc.setModel(modelo.cargarDatos());
-        //vista.setAlwaysOnTop( false );
-        vista.setVisible(true);
-        //deshabilitarElementos();
+        
     }
     
     

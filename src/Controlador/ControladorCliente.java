@@ -42,12 +42,20 @@ public ControladorCliente(ModeloCliente Modelo, VistaCliente Vista)
 }
     public void iniciarVista() 
 {
-    vista.setTitle("Cliente");//Aqui
-    vista.pack();//Aqui
-    vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Aqui
-    vista.setLocationRelativeTo(null);//Aqui
-    vista.setResizable(false);//Aqui
-    vista.setVisible(true);//Aqui
+    
+    vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vista.setAlwaysOnTop( true );
+        vista.setAlwaysOnTop( false );
+        vista.setResizable(false);
+        vista.setTitle("Clientes");
+        vista.pack();
+        vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vista.setLocationRelativeTo(null);
+        vista.setVisible(true);
+    
+    
+    
+    
     vista.clientes.setModel(modelo.cargarDatos());
     
 }
