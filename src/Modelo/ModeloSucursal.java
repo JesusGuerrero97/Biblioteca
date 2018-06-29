@@ -121,34 +121,7 @@ public class ModeloSucursal {
     }
     
     public boolean conActualizar( int vSucId, String vSucNom, String vSucDir, String vSucTel,String vSucCor)
-    { /*
-        try
-        {
-            Connection con = conexion.abrirConexion();
-            String query = "UPDATE sucursal SET nombre_suc = ?, direccion = ?, telefono = ?, coreo = ? WHERE id_sucursal = ?";
-            PreparedStatement preparedStatement = con.prepareStatement(query);
-            preparedStatement.setInt(1, vSucId);
-            preparedStatement.setString(2,vSucNom);
-            preparedStatement.setString(3,vSucDir);
-            preparedStatement.setString(4, vSucTel);
-            preparedStatement.setString(5, vSucCor);
-            int resultado = preparedStatement.executeUpdate();
-            
-            if(resultado > 0)
-            {
-                conexion.cerrarConexion(con);
-                JOptionPane.showMessageDialog(null, "Registro modificado");
-            }
-            else
-            {
-                conexion.cerrarConexion(con);
-                JOptionPane.showMessageDialog(null, "Error al modificar el registro");
-                
-            }
-        } catch (SQLException e) 
-        {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }*/
+    {
         try
         {
             Connection con = conexion .abrirConexion();
@@ -169,10 +142,10 @@ public class ModeloSucursal {
         {
             Connection con = conexion.abrirConexion();
             Statement s = con.createStatement();
-            s.executeUpdate("UPDATE sucursal set status=0 where id_sucursal="+idSucursal+"") ;
+            s.executeUpdate("delete from sucursal where id_sucursal="+idSucursal+";") ;
                 conexion.cerrarConexion(con);
                 return true;
-            
+                    
         } catch (SQLException e) 
         {
             return false;

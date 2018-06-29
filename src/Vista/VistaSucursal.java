@@ -163,6 +163,8 @@ public class VistaSucursal extends javax.swing.JFrame {
         btnRegresar.setBorderPainted(false);
         btnRegresar.setContentAreaFilled(false);
         btnRegresar.setDefaultCapable(false);
+        btnRegresar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnRegresar2.png"))); // NOI18N
+        btnRegresar.setRequestFocusEnabled(false);
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -199,6 +201,11 @@ public class VistaSucursal extends javax.swing.JFrame {
         btnEliminar1.setBorderPainted(false);
         btnEliminar1.setContentAreaFilled(false);
         btnEliminar1.setRequestFocusEnabled(false);
+        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -357,6 +364,10 @@ public class VistaSucursal extends javax.swing.JFrame {
     private void tablaSucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaSucMouseClicked
   
     }//GEN-LAST:event_tablaSucMouseClicked
+
+    private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     /**
      * @param args the command line arguments

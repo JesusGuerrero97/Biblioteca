@@ -116,12 +116,6 @@ public class ControladorEmpleado implements ActionListener, MouseListener{
                 limpiar();
                 vista.empleado.setModel(modelo.cargarDatos());
             }
-            
-            /*
-            int idSucursal = Integer.parseInt(vista.txtIdSucursal.getText());
-            
-            modelo.conEliminar(idSucursal);
-            JOptionPane.showMessageDialog(null, "Registro eliminado exitosamente");*/
         }
         }
 
