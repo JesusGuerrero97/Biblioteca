@@ -156,7 +156,7 @@ public class VistaLibro extends javax.swing.JFrame {
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setFocusPainted(false);
         btnAgregar.setFocusable(false);
-        btnAgregar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnAgregar.png"))); // NOI18N
+        btnAgregar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/btnAgregar2.png"))); // NOI18N
         btnAgregar.setRequestFocusEnabled(false);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
