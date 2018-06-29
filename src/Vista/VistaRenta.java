@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import Modelo.ModeloRenta.LibroComboBox;
+import Modelo.ModeloRenta.ClienteComboBox;
+import Modelo.ModeloRenta.EmpleadoComboBox;
 /**
  *
  * @author Dania
@@ -48,7 +51,7 @@ public class VistaRenta extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         cmbCliente = new javax.swing.JComboBox<>();
         cmbEmpleado = new javax.swing.JComboBox<>();
-        cmbLibro = new javax.swing.JComboBox<>();
+        cmbLibros = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,11 +142,11 @@ public class VistaRenta extends javax.swing.JFrame {
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
 
-        cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cmbEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cmbLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbLibros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbLibrosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -166,19 +169,19 @@ public class VistaRenta extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtIdCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnBuscar1)))
+                                        .addComponent(btnBuscar1))
+                                    .addComponent(cmbLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                                         .addComponent(jLabel2)
                                         .addGap(38, 38, 38)
                                         .addComponent(cmbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(62, 62, 62)
+                                        .addGap(57, 57, 57)
                                         .addComponent(jLabel10)
                                         .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGap(132, 132, 132))
@@ -230,15 +233,25 @@ public class VistaRenta extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(137, 137, 137))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jDateChooserRenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnBuscar1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtIdCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel8)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 60, Short.MAX_VALUE)
+                                        .addComponent(jDateChooserRenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel9)
+                                            .addComponent(cmbLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(25, 25, 25)
+                                        .addComponent(jLabel3))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -247,15 +260,8 @@ public class VistaRenta extends javax.swing.JFrame {
                                 .addGap(23, 23, 23)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4)
-                                    .addComponent(jDateChooserEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(cmbLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(25, 25, 25)
-                                .addComponent(jLabel3)))
-                        .addGap(35, 35, 35)))
+                                    .addComponent(jDateChooserEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(35, 35, 35)))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,6 +304,10 @@ public class VistaRenta extends javax.swing.JFrame {
     private void btnEditar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditar2ActionPerformed
+
+    private void cmbLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLibrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbLibrosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,9 +352,9 @@ public class VistaRenta extends javax.swing.JFrame {
     public javax.swing.JButton btnEditar2;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnRegresar;
-    private javax.swing.JComboBox<String> cmbCliente;
-    private javax.swing.JComboBox<String> cmbEmpleado;
-    private javax.swing.JComboBox<String> cmbLibro;
+    public javax.swing.JComboBox<ClienteComboBox> cmbCliente;
+    public javax.swing.JComboBox<EmpleadoComboBox> cmbEmpleado;
+    public javax.swing.JComboBox<LibroComboBox> cmbLibros;
     private com.toedter.calendar.JDateChooser jDateChooserEntrega;
     public com.toedter.calendar.JDateChooser jDateChooserRenta;
     private javax.swing.JLabel jLabel1;
