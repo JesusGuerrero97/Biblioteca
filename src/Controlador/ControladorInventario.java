@@ -24,6 +24,7 @@ import Vista.MenuPrincipal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -55,6 +56,7 @@ public class ControladorInventario implements ActionListener, MouseListener{
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnBuscar.addActionListener(this);
         this.vista.btnRegresar.addActionListener(this);
+        this.vista.btnActualizar.addActionListener(this);
         this.vista.jTable1.addMouseListener(this);
         
     }
@@ -79,6 +81,18 @@ public class ControladorInventario implements ActionListener, MouseListener{
                 LibroCon.iniciarVista();
                 /**/
 
+        }
+        if(vista.btnEliminar == e.getSource()) {
+            ModeloLibro LibroMod = new ModeloLibro();
+                VistaLibro LibroVis = new VistaLibro();
+           
+                ControladorLibro LibroCon = new ControladorLibro(LibroMod,LibroVis); 
+            if(LibroMod.deleteLibro(Integer.parseInt(vista.txtNombre1.getText()))) {
+                JOptionPane.showMessageDialog(vista, "Registro eliminado exitosamente");
+                limpiar();
+                vista.jTable1.setModel(modelo.inventarioConsultar());
+            }
+                limpiar();
         }
         if(vista.btnEditar == e.getSource())
         {
@@ -118,6 +132,11 @@ public class ControladorInventario implements ActionListener, MouseListener{
            // JOptionPane.showMessageDialog(null, "Registro consultado exitosamente");
         }
         if(vista.btnCancelar == e.getSource()){
+             limpiar();
+            vista.jTable1.setModel(modelo.inventarioConsultar());  
+               
+        } 
+        if(vista.btnActualizar == e.getSource()){
              limpiar();
             vista.jTable1.setModel(modelo.inventarioConsultar());  
                
