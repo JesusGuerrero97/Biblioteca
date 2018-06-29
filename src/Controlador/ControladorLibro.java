@@ -59,11 +59,17 @@ public class ControladorLibro implements ActionListener, MouseListener{
                 limpiar();
             
         }
-        if(vista.btnEditar == e.getSource()) {
+         if(vista.btnEditar == e.getSource()) {
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             String fechaBD = df.format(vista.jDateChooserAddLibro.getDate());
             if(modelo.modificarLibro(Integer.parseInt(vista.txtIdLibro.getText()), vista.txtNombre.getText(), vista.txtAutor.getText(), vista.txtEditorial.getText(),fechaBD, Integer.parseInt(vista.txtNumPag.getText()), vista.txtEdicion.getText(), vista.txtGenero.getText(), Integer.parseInt(vista.txtIdSucursal.getText()), Integer.parseInt(vista.txtExistencia.getText()))) {
                 limpiar();
+                
+             VistaInventario obj = new VistaInventario();
+            ModeloInventario modelo = new ModeloInventario();
+            ControladorInventario ControladorInventario = new ControladorInventario(modelo,obj);
+                ControladorInventario.iniciarVista();
+                vista.dispose();
             }
         }
         if(vista.btnCancelar1 == e.getSource()) {
