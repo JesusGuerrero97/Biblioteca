@@ -17,23 +17,40 @@ import java.sql.*;
 public class ModeloInventario {
     private Conexion conexion = new Conexion();
     
-    public int buscarSucursal(String suc){
-        int result = -1;
-        try{
-            Connection con = conexion.abrirConexion();
-            if(con!=null){
-                Statement s = con.createStatement();
-                ResultSet rs = s.executeQuery("SELECT id_sucursal FROM sucursal WHERE sucursal.`nombre_suc`='"+suc+"';");
-                if(rs.next()){
-                    result = rs.getInt("id_sucursal");  
-                }
-            }
-            conexion.cerrarConexion(con);
-            return result;
-            
-        }catch(SQLException e){
-            return 0;
-        }
+        public DefaultTableModel buscarDatos(int id){
+        try
+       {
+         Connection con = conexion.abrirConexion();
+         Statement s = con.createStatement();
+         DefaultTableModel modelo;
+        
+         try
+        {
+          ResultSet rs = s.executeQuery("SELECT * FROM libro WHERE id_libro = "+id+";");
+          modelo = new DefaultTableModel();
+          ResultSetMetaData rsMd = rs.getMetaData();
+          int cantidadColumnas = rsMd.getColumnCount();
+          for(int i = 1; i <= cantidadColumnas; i++)
+          {
+            modelo.addColumn(rsMd.getColumnLabel(i));
+          }while(rs.next())
+          {
+              Object[] fila = new Object[cantidadColumnas];
+              for(int i = 0; i < cantidadColumnas; i++)
+              {
+                  fila[i] = rs.getObject(i+1);
+              }
+              modelo.addRow(fila);
+          }return modelo;
+        }finally
+         {
+             conexion.cerrarConexion(con);
+         }
+       }catch(SQLException e)
+       {
+           e.printStackTrace();
+       }
+       return null;
     }
     public DefaultTableModel inventarioConsultar(){
         try

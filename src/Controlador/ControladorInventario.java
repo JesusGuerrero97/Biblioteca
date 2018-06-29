@@ -110,6 +110,17 @@ public class ControladorInventario implements ActionListener, MouseListener{
             ControladorMenuPrincipal.iniciarVista();
             vista.dispose();
         }
+        if(vista.btnBuscar == e.getSource()){ 
+            vista.btnCancelar.setEnabled(true);
+            int idSucursal = Integer.parseInt(vista.txtNombre1.getText());
+            vista.jTable1.setModel(modelo.buscarDatos(idSucursal));          
+           // JOptionPane.showMessageDialog(null, "Registro consultado exitosamente");
+        }
+        if(vista.btnCancelar == e.getSource()){
+             limpiar();
+            vista.jTable1.setModel(modelo.inventarioConsultar());  
+               
+        } 
     }
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -128,7 +139,7 @@ public class ControladorInventario implements ActionListener, MouseListener{
                     genero=String.valueOf(vista.jTable1.getValueAt(fila, 7));
                     fecha_pub=String.valueOf(vista.jTable1.getValueAt(fila, 4));
                     numpag=String.valueOf(vista.jTable1.getValueAt(fila, 5));
-                    suc=modelo.buscarSucursal(String.valueOf(vista.jTable1.getValueAt(fila, 8)));
+                    //suc=modelo.buscarDatos(String.valueOf(vista.jTable1.getValueAt(fila, 8)));
                     nombre_suc=String.valueOf(suc);
                     existencia=String.valueOf(vista.jTable1.getValueAt(fila, 9));
                 //cboxCiudad.setSelectedItem(ciudad);
@@ -151,5 +162,9 @@ public class ControladorInventario implements ActionListener, MouseListener{
 
     @Override
     public void mouseExited(MouseEvent e) {
+    }
+     public void limpiar(){
+        vista.txtNombre1.setText("");
+        
     }
 }
