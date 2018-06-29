@@ -72,8 +72,16 @@ public class ModeloRenta {
             try
             {
                 Connection con = conexion .abrirConexion();
+                Statement sel = con.createStatement();
                 Statement s = con.createStatement();
-                s.executeUpdate("delete from renta_libro where id_renta = "+id_renta+";");
+                ResultSet rs=sel.executeQuery("SELECT id_libro FROM renta_libros where id_renta="+id_renta+"");
+                int old_id_libro=0;
+                while(rs.next())
+                {
+                    old_id_libro=rs.getInt("id_libro");
+                }
+                sel.executeUpdate("UPDATE libro SET existencia=existencia+1 WHERE id_libro="+old_id_libro+";");
+                s.executeUpdate("delete from renta_libros where id_renta = "+id_renta+";");
                 conexion.cerrarConexion(con);
                 return true;
 
@@ -92,6 +100,43 @@ public class ModeloRenta {
         try
         {
           ResultSet rs = s.executeQuery("SELECT renta_libros.`id_renta`,libro.`nombre`,cliente.`nombre_cli`,renta_libros.`fecha_renta`,renta_libros.`fecha_entrega`,empleado.`nombre_emp`FROM  renta_libros INNER JOIN libro ON renta_libros.`id_libro`=libro.`id_libro` INNER JOIN cliente ON renta_libros.`id_cliente`=cliente.`id_cliente` INNER JOIN empleado ON renta_libros.`id_emp`=empleado.`id_emp`;");
+          modelo = new DefaultTableModel();
+          ResultSetMetaData rsMd = rs.getMetaData();
+          int cantidadColumnas = rsMd.getColumnCount();
+          for(int i = 1; i <= cantidadColumnas; i++)
+          {
+            modelo.addColumn(rsMd.getColumnLabel(i));
+          }while(rs.next())
+          {
+              Object[] fila = new Object[cantidadColumnas];
+              for(int i = 0; i < cantidadColumnas; i++)
+              {
+                  fila[i] = rs.getObject(i+1);
+              }
+              modelo.addRow(fila);
+          }return modelo;
+        }finally
+         {
+             conexion.cerrarConexion(con);
+         }
+       }catch(SQLException e)
+       {
+           e.printStackTrace();
+       }
+       return null;
+    }
+    
+    public DefaultTableModel BuscarDatos(int id_renta)
+    {
+       try
+       {
+         Connection con = conexion.abrirConexion();
+         Statement s = con.createStatement();
+         DefaultTableModel modelo;
+        
+        try
+        {
+          ResultSet rs = s.executeQuery("SELECT renta_libros.`id_renta`,libro.`nombre`,cliente.`nombre_cli`,renta_libros.`fecha_renta`,renta_libros.`fecha_entrega`,empleado.`nombre_emp`FROM  renta_libros INNER JOIN libro ON renta_libros.`id_libro`=libro.`id_libro` INNER JOIN cliente ON renta_libros.`id_cliente`=cliente.`id_cliente` INNER JOIN empleado ON renta_libros.`id_emp`=empleado.`id_emp` WHERE reta_libros.id_renta="+id_renta+";");
           modelo = new DefaultTableModel();
           ResultSetMetaData rsMd = rs.getMetaData();
           int cantidadColumnas = rsMd.getColumnCount();

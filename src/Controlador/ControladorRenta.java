@@ -61,7 +61,7 @@ public class ControladorRenta implements ActionListener, MouseListener{
         //vista.setAlwaysOnTop( false );
         //vista.setVisible(true);
         vista.setResizable(false);
-        vista.setTitle("Sucursal");
+        vista.setTitle("Renta Libros");
             //transparenciaButton();
             //vista.setModel(modelo.cargarDatos());
         //vista.setAlwaysOnTop( false );
@@ -89,6 +89,7 @@ public class ControladorRenta implements ActionListener, MouseListener{
             {
                  JOptionPane.showMessageDialog(null, "Renta Registrada con exito", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                  vista.tablaRenta.setModel(modelo.cargarDatos());
+                 limpiarVista();
             }
         }
         if(vista.btnEditar2== e.getSource())
@@ -97,8 +98,37 @@ public class ControladorRenta implements ActionListener, MouseListener{
             {
                 JOptionPane.showMessageDialog(null, "Renta Modificada con exito", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 vista.tablaRenta.setModel(modelo.cargarDatos());
+                limpiarVista();
             }
         }
+        if(vista.btnEliminar == e.getSource())
+        {
+            if(modelo.deleteRenta(Integer.parseInt(vista.txtIdRenta.getText())))
+            {
+                JOptionPane.showMessageDialog(null, "Renta Eliminada con exito", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                vista.tablaRenta.setModel(modelo.cargarDatos());
+            }
+        }
+        //NO FUNCIONA BIEN
+        if(vista.btnBuscar1 == e.getSource())
+        {
+            int idEmp = Integer.parseInt(vista.txtIdRenta.getText());
+            vista.tablaRenta.setModel(modelo.BuscarDatos(idEmp));
+        }
+        
+        if(vista.btnRegresar==e.getSource())
+        {
+            MenuPrincipal obj = new MenuPrincipal();
+            ModeloMenuPrincipal modeloMenu = new ModeloMenuPrincipal();
+            ControladorMenuPrincipal ControladorMenuPrincipal = new ControladorMenuPrincipal(modeloMenu,obj);
+            ControladorMenuPrincipal.iniciarVista();
+            vista.dispose();
+        }
+        /*if(vista.btnCancelar== e.getSource())
+        {
+            limpiarVista();
+        }*/
+        
     }
 
     @Override
@@ -186,7 +216,11 @@ public class ControladorRenta implements ActionListener, MouseListener{
             }
          }
     }
-
+    public void limpiarVista(){
+        vista.jDateChooserEntrega.setDateFormatString("");
+        vista.jDateChooserRenta.setDateFormatString("");
+        vista.txtIdRenta.setText("");
+    }
     @Override
     public void mousePressed(MouseEvent e) {
         
