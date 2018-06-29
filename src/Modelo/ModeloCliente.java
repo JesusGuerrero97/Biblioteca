@@ -5,20 +5,19 @@
  */
 package Modelo;
 
-import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
-import java.util.Date;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Dania
  */
-public class ModeloCliente {
+public class ModeloCliente{
     private Conexion conexion = new Conexion();
     
      public boolean agregarCliente(int id_cliente, String nombre, String direccion, String telefono, String correo, int librosadq){
@@ -135,5 +134,69 @@ public class ModeloCliente {
            e.printStackTrace();
        }
        return null;
+    }
+    
+     public void llenarComboClientes(JComboBox<ClienteComboBox> comboParto)
+    {
+        try
+        {
+         Connection con = conexion.abrirConexion();
+         Statement s = con.createStatement();
+         ResultSet rs=s.executeQuery("SELECT id_cliente,nombre_cli FROM cliente ORDER BY nombreCompleto");
+         while(rs.next())
+         {
+             comboParto.addItem(new ClienteComboBox(rs.getInt("id_cliente"),rs.getString("nombre_cli")));
+         }
+         conexion.cerrarConexion(con);
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+    public class ClienteComboBox
+    {
+        private int id_cliente;
+        private String nombre_cli;
+
+        public ClienteComboBox(int id_cliente, String nombre_cli) {
+            this.id_cliente = id_cliente;
+            this.nombre_cli = nombre_cli;
+        }
+
+        /**
+         * @return the idPaciente
+         */
+        public int getId_cliente() {
+            return id_cliente;
+        }
+
+        /**
+         * @param idPaciente the idPaciente to set
+         */
+        public void setId_cliente(int idPaciente) {
+            this.id_cliente = idPaciente;
+        }
+
+        /**
+         * @return the nombrePaciente
+         */
+        public String getNombre_cli() {
+            return nombre_cli;
+        }
+
+        /**
+         * @param nombrePaciente the nombrePaciente to set
+         */
+        public void setNombre_cli(String nombrePaciente) {
+            this.nombre_cli = nombre_cli;
+        }
+        
+        @Override
+        public String toString()
+        {
+            return nombre_cli;
+        }
     }
 }
