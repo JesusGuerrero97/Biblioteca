@@ -14,6 +14,7 @@ import Controlador.ControladorMenuPrincipal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
@@ -30,6 +31,7 @@ public class ControladorLogin implements ActionListener, MouseListener{
     public ControladorLogin(ModSQLInicioSesion MI, Login log){
         this.MInicio=MI;
         this.Log=log;
+        //this.Log.btnSalir.addActionListener(this);
     }
 
     public void verificarInicio()
@@ -60,17 +62,26 @@ public class ControladorLogin implements ActionListener, MouseListener{
         Log.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Log.setVisible(true);
         Log.btnIniciaSesion.addActionListener(this);
-        //visInicio.btnSalir.addKeyListener(this);
+        Log.btnSalir.addActionListener(this);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(Log.btnIniciaSesion == e.getSource() && !Log.txtUsuario.getText().equals("") && !String.valueOf(Log.jPassword.getPassword()).equals("")) {
-            verificarInicio();
-        }
-        if(Log.txtUsuario.getText().equals("") && String.valueOf(Log.jPassword.getPassword()).equals(""))
-        {
+        if(Log.btnIniciaSesion == e.getSource()) {
+            if(!Log.txtUsuario.getText().equals("") && !String.valueOf(Log.jPassword.getPassword()).equals(""))
+            {   
+                verificarInicio();
+            }
+            else if(Log.txtUsuario.getText()=="" || Log.txtUsuario.getText()==null)
+            {
              JOptionPane.showMessageDialog(null, "ERROR", "Complete todos los campos", JOptionPane.INFORMATION_MESSAGE);
+             System.exit(0);
+            }
+        }
+        
+        if(Log.btnSalir == e.getSource())
+        {
+            System.exit(0);
         }
     }
 
