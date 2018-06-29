@@ -27,7 +27,7 @@ public class ModeloRenta {
         {
             Connection con = conexion.abrirConexion();
             Statement s = con.createStatement();
-            
+            s.executeUpdate("Update cliente set libros_adq=libros_adq+1 WHERE id_cliente="+id_cliente+";");
             //System.out.println("insert into renta_libro(id_renta, id_libro, id_cliente, fecha_renta, fecha_entrega, id_emp) values("+id_renta+","+id_libro+", "+id_cliente+", '"+fecha_renta+"', '"+fecha_entrega+"', '"+id_emp+"');");
             s.executeUpdate("insert into renta_libros(id_renta, id_libro, id_cliente, fecha_renta, fecha_entrega, id_emp) values("+id_renta+","+id_libro+", "+id_cliente+", '"+fecha_renta+"', '"+fecha_entrega+"',"+id_emp+");");
             //INSERT INTO `biblioteca`.`libro` (`id_libro`, `nombre`, `autor`, `editorial`, `fecha_pub`, `numpag`, `edicion`, `genero`, `id_sucursal`, `existencia`) VALUES ('30', 'porpoe', 'dngf', 'dskygfs', '1998-02-22', '234', 'efds', 'edff', '3', '15');
@@ -74,14 +74,17 @@ public class ModeloRenta {
                 Connection con = conexion .abrirConexion();
                 Statement sel = con.createStatement();
                 Statement s = con.createStatement();
-                ResultSet rs=sel.executeQuery("SELECT id_libro FROM renta_libros where id_renta="+id_renta+"");
+                ResultSet rs=sel.executeQuery("SELECT id_libro,id_cliente FROM renta_libros where id_renta="+id_renta+"");
                 int old_id_libro=0;
+                int cliente=0;
                 while(rs.next())
                 {
                     old_id_libro=rs.getInt("id_libro");
+                    cliente=rs.getInt("id_cliente");
                 }
                 sel.executeUpdate("UPDATE libro SET existencia=existencia+1 WHERE id_libro="+old_id_libro+";");
                 s.executeUpdate("delete from renta_libros where id_renta = "+id_renta+";");
+                s.executeUpdate("Update cliente set libros_adq=libros_adq-1 WHERE id_cliente="+cliente+";");
                 conexion.cerrarConexion(con);
                 return true;
 
